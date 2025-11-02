@@ -2,7 +2,7 @@
 Gestore Password v2
 
 
-# Progettazione
+# Progettazione (in progress)
 
 ## Architettura
 
@@ -57,6 +57,9 @@ Finestre:
     * btn Indietro -> Finestra Principale
     * btn Modifica profilo -> Finestra Modifica profilo
 
+* Aggiungi servizio
+    * ...
+
 * Modifica servizio
     * textfield nuovo_nome
     * textfield nuovo_username
@@ -64,11 +67,32 @@ Finestre:
     * textfield nuova_password
     * btn Conferma
     * btn Annulla -> Finestra Principale
-    
+
 * Modifica profilo
     * textfield Utente
     * textfield vecchia_password
     * textfield nuova_password
     * btn Conferma
     * btn Annulla -> Finestra Principale
+
+
+## Requisiti
+
+### Funzionali
+
+* Creare uno/più utente/i (Registrazione)
+* Modificare proprio utente (Profilo -> Modifica profilo)
+* Recupero password (prossime versioni)
+* Visualizzare proprie password
+* Modificare servizio (Principale -> Modifica servizio)
+* Aggiungere servizi (Principale -> Aggiungi servizio)
+* ...
+
+### Non Funzionali
+
+* Criptazione password master
+* Criptazione password servizi
+* Velocità caricamento
+* Semplicità di utilizzo
+
 

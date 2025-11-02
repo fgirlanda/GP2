@@ -26,6 +26,49 @@ Gestore Password v2
 ### GUI
 
 Finestre:
-- Log in
-- Registrazione
-- Principale
+* Log in
+    * textfield Utente
+    * textfield Password
+    * btn Registrati
+    * btn Login
+
+* Registrazione
+    * textfield Utente
+    * textfield Password
+    * btn Annulla -> Finestra Log in
+    * btn Registrati
+
+* Principale
+    * textfield Cerca
+    * btn Profilo -> Finestra Profilo
+    * btn Esci
+    * tab Servizi
+        * Servizio
+        * Username
+        * Password
+        * btns
+            * btn Modifica -> Finestra Modifica servizio
+            * btn Elimina
+
+* Profilo
+    * label Username
+    * label Password
+    * btn Mostra password
+    * btn Indietro -> Finestra Principale
+    * btn Modifica profilo -> Finestra Modifica profilo
+
+* Modifica servizio
+    * textfield nuovo_nome
+    * textfield nuovo_username
+    * textfield vecchia_password
+    * textfield nuova_password
+    * btn Conferma
+    * btn Annulla -> Finestra Principale
+    
+* Modifica profilo
+    * textfield Utente
+    * textfield vecchia_password
+    * textfield nuova_password
+    * btn Conferma
+    * btn Annulla -> Finestra Principale
+

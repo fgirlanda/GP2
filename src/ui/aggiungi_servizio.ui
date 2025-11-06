@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>403</width>
-    <height>353</height>
+    <height>356</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,23 +18,8 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="spacing">
-        <number>37</number>
-       </property>
        <item>
         <widget class="QLabel" name="label">
-         <property name="font">
-          <font>
-           <pointsize>14</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Servizio</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -45,12 +30,21 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="spacing">
-        <number>10</number>
+        <number>40</number>
        </property>
        <item>
         <widget class="QLabel" name="label_2">
@@ -60,7 +54,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Vecchia Password</string>
+          <string>Username</string>
          </property>
         </widget>
        </item>
@@ -78,7 +72,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
-        <number>17</number>
+        <number>45</number>
        </property>
        <item>
         <widget class="QLabel" name="label_3">
@@ -88,7 +82,7 @@
           </font>
          </property>
          <property name="text">
-          <string>Nuova Password</string>
+          <string>Password</string>
          </property>
         </widget>
        </item>

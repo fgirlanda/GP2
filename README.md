@@ -39,23 +39,23 @@ Finestre:
     * btn Registrati
 
 * Principale
-    * textfield Cerca
-    * btn Profilo -> Finestra Profilo
-    * btn Esci
-    * tab Servizi
-        * Servizio
-        * Username
-        * Password
-        * btns
-            * btn Modifica -> Finestra Modifica servizio
-            * btn Elimina
-
-* Profilo
-    * label Username
-    * label Password
-    * btn Mostra password
-    * btn Indietro -> Finestra Principale
-    * btn Modifica profilo -> Finestra Modifica profilo
+    * Tab Servizi
+        * textfield Cerca
+        * btn cerca
+        * btn aggiungi servizio -> Finestra Aggiungi servizio
+        * table Servizi
+            * Servizio
+            * Username
+            * Password
+            * btns
+                * btn Modifica -> Finestra Modifica servizio
+                * btn Elimina
+    * Tab Profilo
+        * label username
+        * label password
+        * btn mostra password
+        * btn log out
+        * btn modifica -> Finestra Modifica Profilo
 
 * Aggiungi servizio
     * ...
@@ -63,7 +63,6 @@ Finestre:
 * Modifica servizio
     * textfield nuovo_nome
     * textfield nuovo_username
-    * textfield vecchia_password
     * textfield nuova_password
     * btn Conferma
     * btn Annulla -> Finestra Principale

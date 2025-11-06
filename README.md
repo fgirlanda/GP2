@@ -94,4 +94,34 @@ Finestre:
 * Velocità caricamento
 * Semplicità di utilizzo
 
+## Units
+
+### Utility
+* Gestore database
+    * Creazione
+    * Inserimento
+    * Modifica
+    * Cancellazione
+* Criptatore
+    * Cripta (Simmetrica/Asimmetrica)
+    * Decripta
+
+### Registrazione
+
+* Criptatore*
+* Controller registrazione
+    * 
+* Gestore database*
+
+## Unit test
+
+### Criptatore
+
+* Cases
+    * Simmetrica
+    * Asimmetrica
+    * Decripta
+* Dati
+    * String esempio
+
 

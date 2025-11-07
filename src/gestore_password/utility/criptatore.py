@@ -41,6 +41,7 @@ parallelism=2,     # thread
 hash_len=32,       # lunghezza hash
 salt_len=16        # salt automatico
 )
+
 def genera_hash(password_utente):
     return ph.hash(password_utente)
 

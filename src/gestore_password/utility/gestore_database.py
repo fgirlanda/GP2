@@ -60,28 +60,44 @@ if getattr(sys, 'frozen', False):
 else:
     dati_dir = Path(__file__).resolve().parent.parent / "dati"  
 dati_dir.mkdir(exist_ok=True)
-    
-def crea_tabella(utente: str, dbPath=None):
-    if utente:
-        if not dbPath is None:
+
+
+def connetti(utente_loggato: str, dbPath=None):
+    global conn
+    if dbPath is None:
+        if utente_loggato:
+            dbPath = dati_dir / f"{utente_loggato}.db"
+        else:
             dbPath = dati_dir / "utenti.db"
-        query_create = """CREATE TABLE IF NOT EXISTS Utenti(
-            utente text primary key,
-            hash_password text not null,
-            salt blob not null
-            );"""
-    else:
-        if not dbPath is None:
-            dbPath = dati_dir / f"{utente}.db"
-        query_create = """CREATE TABLE IF NOT EXISTS Servizi(
-          id integer primary key autoincrement,
-          nome text,
-          username text,
-          password_cifrata text not null
-          );"""
-        
-    with sqlite3.connect(dbPath, uri=True) as conn:
+            
+    conn = sqlite3.connect(dbPath, uri=True)
+
+def crea_tabella(query_create):
+    global conn
+    # if not utente_loggato:
+    #     query_create = """CREATE TABLE IF NOT EXISTS Utenti(
+    #         utente text primary key,
+    #         hash_password text not null,
+    #         salt blob not null
+    #         );"""
+    # else:
+    #     query_create = """CREATE TABLE IF NOT EXISTS Servizi(
+    #         id integer primary key autoincrement,
+    #         nome text,
+    #         username text,
+    #         password_cifrata text not null
+    #         );"""
+    with conn:
         cur = conn.cursor()
         cur.execute(query_create)
         conn.commit()
+    
+def inserisci_dati(query_insert, dati):
+    global conn
+    with conn:
+        cur = conn.cursor()
+        cur.execute(query_insert, (dati[0], dati[1], dati[2]))
+        conn.commit()
+        
+    
     

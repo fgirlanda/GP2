@@ -30,7 +30,7 @@ def inserisci_dati(query_insert, dati):
     global conn
     with conn:
         cur = conn.cursor()
-        cur.execute(query_insert, (dati[0], dati[1], dati[2]))
+        cur.execute(query_insert, dati)
         conn.commit()
     
 def rimuovi_dati(query_delete, key):
@@ -47,4 +47,5 @@ def modifica_dati(query_update, dati):
         cur.execute(query_update, dati)
         conn.commit()
     
-    
+
+# TRASFORMARE IN CLASSE ED ELIMINARE GLOBAL

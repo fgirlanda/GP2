@@ -20,7 +20,6 @@ def get_db_path(utente_loggato: str | None = None):
 
 @contextmanager
 def connetti(dbPath=None):
-    """Context manager per connessione SQLite"""
     conn = sqlite3.connect(dbPath, uri=True)
     try:
         yield conn
@@ -30,7 +29,6 @@ def connetti(dbPath=None):
 
 
 def esegui(query: str, dati: tuple | None = None, conn=None, dbPath=None):
-    """Query generica (INSERT, UPDATE, DELETE, CREATE)"""
     with conn if conn else connetti(dbPath) as c:
         cur = c.cursor()
         cur.execute(query, dati or ())
@@ -38,7 +36,6 @@ def esegui(query: str, dati: tuple | None = None, conn=None, dbPath=None):
 
 
 def fetch(query: str, dati: tuple | None = None, conn=None, dbPath=None):
-    """Esegue SELECT e ritorna tutti i risultati"""
     with conn if conn else connetti(dbPath) as c:
         cur = c.cursor()
         cur.execute(query, dati or ())

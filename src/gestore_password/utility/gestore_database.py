@@ -1,51 +1,45 @@
 from pathlib import Path
 import sqlite3
 import sys
+from contextlib import contextmanager
 
+# Path dati
 if getattr(sys, 'frozen', False):
-    dati_dir = Path(sys.executable).resolve().parent / "dati"
+    DATI_DIR = Path(sys.executable).resolve().parent / "dati"
 else:
-    dati_dir = Path(__file__).resolve().parent.parent / "dati"  
-dati_dir.mkdir(exist_ok=True)
+    DATI_DIR = Path(__file__).resolve().parent.parent / "dati"
+
+DATI_DIR.mkdir(exist_ok=True)
 
 
-def connetti(utente_loggato: str, dbPath=None):
-    global conn
-    if dbPath is None:
-        if utente_loggato:
-            dbPath = dati_dir / f"{utente_loggato}.db"
-        else:
-            dbPath = dati_dir / "utenti.db"
-            
+def get_db_path(utente_loggato: str | None = None):
+    if utente_loggato:
+        return DATI_DIR / f"{utente_loggato}.db"
+    return DATI_DIR / "utenti.db"
+
+
+@contextmanager
+def connetti(dbPath=None):
+    """Context manager per connessione SQLite"""
     conn = sqlite3.connect(dbPath, uri=True)
+    try:
+        yield conn
+        conn.commit()
+    finally:
+        conn.close()
 
-def crea_tabella(query_create):
-    global conn
-    with conn:
-        cur = conn.cursor()
-        cur.execute(query_create)
-        conn.commit()
-    
-def inserisci_dati(query_insert, dati):
-    global conn
-    with conn:
-        cur = conn.cursor()
-        cur.execute(query_insert, dati)
-        conn.commit()
-    
-def rimuovi_dati(query_delete, key):
-    global conn
-    with conn:
-        cur = conn.cursor()
-        cur.execute(query_delete, key)
-        conn.commit()
 
-def modifica_dati(query_update, dati):
-    global conn
-    with conn:
-        cur = conn.cursor()
-        cur.execute(query_update, dati)
-        conn.commit()
-    
+def esegui(query: str, dati: tuple | None = None, conn=None, dbPath=None):
+    """Query generica (INSERT, UPDATE, DELETE, CREATE)"""
+    with conn if conn else connetti(dbPath) as c:
+        cur = c.cursor()
+        cur.execute(query, dati or ())
+        return cur.lastrowid
 
-# TRASFORMARE IN CLASSE ED ELIMINARE GLOBAL
+
+def fetch(query: str, dati: tuple | None = None, conn=None, dbPath=None):
+    """Esegue SELECT e ritorna tutti i risultati"""
+    with conn if conn else connetti(dbPath) as c:
+        cur = c.cursor()
+        cur.execute(query, dati or ())
+        return cur.fetchall()

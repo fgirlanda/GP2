@@ -96,6 +96,14 @@ Finestre:
 
 ## Units
 
+### Regole generali
+
+#### Nomenclatura in QT Designer
+
+* Campi di testo: `edit_nome_campo`
+* Bottoni: `btn_nome_bottone`
+* Label: `lbl_nome_label`
+
 ### Utility
 * Gestore database
     * Creazione

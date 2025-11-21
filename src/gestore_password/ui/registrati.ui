@@ -72,7 +72,7 @@
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="lbl_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -84,7 +84,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_4">
+        <widget class="QLineEdit" name="edit_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -103,7 +103,7 @@
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="lbl_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -115,7 +115,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="edit_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -131,7 +131,7 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="btn_crea_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -143,7 +143,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="btn_annulla">
          <property name="font">
           <font>
            <pointsize>14</pointsize>

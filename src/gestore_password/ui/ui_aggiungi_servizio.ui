@@ -18,26 +18,20 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="spacing">
-        <number>100</number>
-       </property>
-       <property name="rightMargin">
-        <number>20</number>
-       </property>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="aser_slbl_nome">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Username</string>
+          <string>Nome servizio</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="aser_edit_nome">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -52,23 +46,20 @@
        <property name="spacing">
         <number>40</number>
        </property>
-       <property name="rightMargin">
-        <number>20</number>
-       </property>
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="aser_slbl_user">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Vecchia password</string>
+          <string>Username</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="aser_edit_user">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -83,23 +74,20 @@
        <property name="spacing">
         <number>45</number>
        </property>
-       <property name="rightMargin">
-        <number>20</number>
-       </property>
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="aser_slbl_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Nuova Password</string>
+          <string>Password</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="aser_edit_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -112,7 +100,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
+    <widget class="QDialogButtonBox" name="aser_dlg_btns">
      <property name="font">
       <font>
        <pointsize>14</pointsize>
@@ -131,7 +119,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>aser_dlg_btns</sender>
    <signal>accepted()</signal>
    <receiver>Dialog</receiver>
    <slot>accept()</slot>
@@ -147,7 +135,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>aser_dlg_btns</sender>
    <signal>rejected()</signal>
    <receiver>Dialog</receiver>
    <slot>reject()</slot>

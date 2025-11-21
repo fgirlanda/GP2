@@ -98,11 +98,24 @@ Finestre:
 
 ### Regole generali
 
+#### Convenzioni
+* Username master -> `utente`
+* Username servizio -> `user`
+* Finestre
+    * aggiungi_servizio -> aser
+    * login -> login
+    * modifica_servizio -> mser
+    * modifica_profilo -> mpro
+    * principale -> main
+    * registrati -> reg
 #### Nomenclatura in QT Designer
 
-* Campi di testo: `edit_nome_campo`
-* Bottoni: `btn_nome_bottone`
-* Label: `lbl_nome_label`
+* Campi di testo: `finestra_edit_nome_campo`
+* Bottoni: `finestra_btn_nome_bottone`
+* Label statiche: `finestra_slbl_nome_label`
+* Label dinamiche: `finestra_dlbl_nome_label`
+* Table: `finestra_tbl_nome_tabella`
+* Elementi dialogue: `finestra_dlg_nome_elemento` (es. `modservizio_dlg__btns`)
 
 ### Utility
 * Gestore database

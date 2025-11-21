@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Registrati</string>
+   <string>Log in</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -43,7 +43,7 @@
       <number>20</number>
      </property>
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="login_slbl_titolo">
        <property name="font">
         <font>
          <pointsize>36</pointsize>
@@ -53,7 +53,7 @@
         <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>REGISTRATI</string>
+        <string>LOG IN</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -72,7 +72,7 @@
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="lbl_utente">
+        <widget class="QLabel" name="login_slbl_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -84,7 +84,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="edit_utente">
+        <widget class="QLineEdit" name="login_edit_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -103,7 +103,7 @@
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="lbl_password">
+        <widget class="QLabel" name="login_slbl_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -115,7 +115,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="edit_password">
+        <widget class="QLineEdit" name="login_edit_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -131,26 +131,26 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QPushButton" name="btn_crea_utente">
+        <widget class="QPushButton" name="login_btn_login">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Crea utente</string>
+          <string>Log in</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="btn_annulla">
+        <widget class="QPushButton" name="login_btn_registrati">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Annulla</string>
+          <string>Registrati</string>
          </property>
         </widget>
        </item>

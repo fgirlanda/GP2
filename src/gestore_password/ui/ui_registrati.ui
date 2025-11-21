@@ -11,13 +11,13 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Log in</string>
+   <string>Registrati</string>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -43,7 +43,7 @@
       <number>20</number>
      </property>
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="reg_slbl_titolo">
        <property name="font">
         <font>
          <pointsize>36</pointsize>
@@ -53,7 +53,7 @@
         <enum>Qt::LeftToRight</enum>
        </property>
        <property name="text">
-        <string>LOG IN</string>
+        <string>REGISTRATI</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -72,7 +72,7 @@
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="label_4">
+        <widget class="QLabel" name="reg_slbl_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -84,7 +84,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_4">
+        <widget class="QLineEdit" name="reg_edit_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -103,7 +103,7 @@
         <number>50</number>
        </property>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="reg_slbl_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -115,7 +115,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="reg_edit_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -131,26 +131,26 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="reg_btn_crea_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Log in</string>
+          <string>Crea utente</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="reg_btn_annulla">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Registrati</string>
+          <string>Annulla</string>
          </property>
         </widget>
        </item>

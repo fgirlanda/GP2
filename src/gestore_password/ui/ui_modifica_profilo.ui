@@ -11,27 +11,33 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Aggiungi servizio</string>
+   <string>Modifica Profilo</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>85</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
        <item>
-        <widget class="QLabel" name="label">
+        <widget class="QLabel" name="mpro_slbl_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Nome servizio</string>
+          <string>Username</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="mpro_edit_nuovo_utente">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -44,22 +50,25 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="spacing">
-        <number>40</number>
+        <number>25</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
        </property>
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="mpro_slbl_vecchia_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Username</string>
+          <string>Vecchia password</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_2">
+        <widget class="QLineEdit" name="mpro_edit_vecchia_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -72,22 +81,25 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <property name="spacing">
-        <number>45</number>
+        <number>33</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
        </property>
        <item>
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="mpro_slbl_nuova_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Password</string>
+          <string>Nuova Password</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit_3">
+        <widget class="QLineEdit" name="mpro_edit_nuova_password">
          <property name="font">
           <font>
            <pointsize>14</pointsize>
@@ -100,7 +112,7 @@
     </layout>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
+    <widget class="QDialogButtonBox" name="mpro_dlg_btns">
      <property name="font">
       <font>
        <pointsize>14</pointsize>
@@ -119,7 +131,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>mpro_dlg_btns</sender>
    <signal>accepted()</signal>
    <receiver>Dialog</receiver>
    <slot>accept()</slot>
@@ -135,7 +147,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>buttonBox</sender>
+   <sender>mpro_dlg_btns</sender>
    <signal>rejected()</signal>
    <receiver>Dialog</receiver>
    <slot>reject()</slot>

@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>652</width>
-    <height>537</height>
+    <height>536</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>GP2 - Gestore Password</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -39,7 +39,7 @@
              <number>300</number>
             </property>
             <item>
-             <widget class="QLineEdit" name="lineEdit">
+             <widget class="QLineEdit" name="main_edit_cerca">
               <property name="inputMask">
                <string>Cerca...</string>
               </property>
@@ -49,7 +49,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="main_btn_cerca">
               <property name="cursor">
                <cursorShape>OpenHandCursor</cursorShape>
               </property>
@@ -71,7 +71,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QTableView" name="tableView"/>
+           <widget class="QTableView" name="main_tbl_servizi"/>
           </item>
          </layout>
         </item>
@@ -91,7 +91,7 @@
            <number>200</number>
           </property>
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="main_slbl_utente">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -103,7 +103,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="main_dlbl_utente">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -128,7 +128,7 @@
            <number>165</number>
           </property>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="main_slbl_password">
             <property name="font">
              <font>
               <pointsize>14</pointsize>
@@ -140,7 +140,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="main_dlbl_password">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -158,7 +158,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_4">
+           <widget class="QPushButton" name="main_btn_visibility_pass">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -188,7 +188,7 @@
            <number>125</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="main_btn_modutente">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -206,7 +206,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_3">
+           <widget class="QPushButton" name="main_btn_logout">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>

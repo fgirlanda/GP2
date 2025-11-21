@@ -1,0 +1,14 @@
+{
+    "include": [
+        "src"
+    ],
+    "extraPaths": [
+        "src/gestore-password"
+    ],
+    "executionEnvironments": [
+        {
+            "root": "src/gestore_password",
+            "extraPaths": ["."]
+        }
+    ]
+}

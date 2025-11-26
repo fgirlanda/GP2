@@ -13,3 +13,4 @@ class Registrazione(QMainWindow, Ui_MainWindow):
         utente = self.reg_edit_utente.text()
         raw_password = self.reg_edit_password.text()
         
+        

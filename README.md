@@ -134,6 +134,10 @@ Finestre:
     * 
 * Gestore database*
 
+### Gestore database
+
+MODIFICARE 2 DB X 1 TABELLA -> 1 DB X 2 TABELLE
+
 ## Unit test
 
 ### Criptatore
@@ -144,5 +148,7 @@ Finestre:
     * Decripta
 * Dati
     * String esempio
+
+
 
 

@@ -136,7 +136,16 @@ Finestre:
 
 ### Gestore database
 
-MODIFICARE 2 DB X 1 TABELLA -> 1 DB X 2 TABELLE
+#### Flusso dati
+
+Registrazione -> update utenti 
+login -> select utente (tutte le info tranne salt)
+mostra servizi -> select servizi (where id = id_utente)
+aggiungi servizio -> update servizi (id servizio da riga della tabella)
+rimuovi servizio -> delete servizi (id servizio da riga della tabella)
+modifica profilo -> update utenti (where id = id_utente)
+elimina profilo -> delete utenti (where id = id_utente)
+
 
 ## Unit test
 

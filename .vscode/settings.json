@@ -1,9 +1,12 @@
 {
-    "python-envs.defaultEnvManager": "ms-python.python:poetry",
-    "python-envs.defaultPackageManager": "ms-python.python:poetry",
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
     "cSpell.enabled": false,
     "python.autoComplete.extraPaths": [
         "${workspaceFolder}/src/gestore_password"
     ],
-    "python-envs.pythonProjects": []
+    "python-envs.pythonProjects": [],
+    "python.formatting.provider": "autopep8",
+    "editor.defaultFormatter": "ms-python.python",
+    "editor.formatOnSave": true
 }

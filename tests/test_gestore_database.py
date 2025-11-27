@@ -1,87 +1,23 @@
 import pytest
-from gestore_password.utility.gestore_database import connetti, esegui, fetch
-
-DB_MEMORY = "file::memory:?cache=shared"  # Database isolato in memoria per ogni test
+from gestore_password.utility.gestore_database import GestoreDatabase
 
 
-def test_utente():
-    with connetti(DB_MEMORY) as conn:
-        # Creazione tabella Utenti
-        esegui("""
-        CREATE TABLE IF NOT EXISTS Utenti(
-            utente TEXT PRIMARY KEY,
-            hash_password TEXT NOT NULL,
-            salt BLOB NOT NULL
-        )
-        """, conn=conn)
-
-        # Inserimento utente
-        esegui(
-            "INSERT INTO Utenti (utente, hash_password, salt) VALUES (?, ?, ?)",
-            ("mario", "hash123", b"salt"),
-            conn=conn
-        )
-
-        # Verifica inserimento
-        row = fetch("SELECT * FROM Utenti WHERE utente = ?", ("mario",), conn=conn)[0]
-        assert row[0] == "mario"
-        assert row[1] == "hash123"
-        assert row[2] == b"salt"
-
-        # Modifica utente
-        esegui(
-            "UPDATE Utenti SET utente=?, hash_password=?, salt=? WHERE utente=?",
-            ("luca", "hash456", b"nuovo salt", "mario"),
-            conn=conn
-        )
-        row = fetch("SELECT * FROM Utenti WHERE utente = ?", ("luca",), conn=conn)[0]
-        assert row[0] == "luca"
-        assert row[1] == "hash456"
-        assert row[2] == b"nuovo salt"
-
-        # Cancellazione utente
-        esegui("DELETE FROM Utenti WHERE utente=?", ("luca",), conn=conn)
-        rows = fetch("SELECT * FROM Utenti WHERE utente = ?", ("luca",), conn=conn)
-        assert rows == []
+@pytest.fixture
+def db():
+    db = GestoreDatabase(in_memory=True)
+    yield db
+    db.chiudi()
 
 
-def test_servizio():
-    with connetti(DB_MEMORY) as conn:
-        # Creazione tabella Servizi
-        esegui("""
-        CREATE TABLE IF NOT EXISTS Servizi(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT,
-            username TEXT,
-            password_cifrata TEXT NOT NULL
-        )
-        """, conn=conn)
+def test_init(db):
+    assert db.conn is not None
 
-        # Inserimento servizio
-        esegui(
-            "INSERT INTO Servizi (nome, username, password_cifrata) VALUES (?, ?, ?)",
-            ("netflix", "mario@mail.it", "cifrata"),
-            conn=conn
-        )
 
-        # Verifica inserimento
-        row = fetch("SELECT * FROM Servizi WHERE username = ?", ("mario@mail.it",), conn=conn)[0]
-        assert row[1] == "netflix"
-        assert row[2] == "mario@mail.it"
-        assert row[3] == "cifrata"
+def test_crea_utente(db):
+    utente = "mario"
+    hash_password = "prova_hash"
+    salt = b"prova_salt"
+    prova_dati = (utente, hash_password, salt)
+    db.inserisci_utente(prova_dati)
 
-        # Modifica servizio
-        esegui(
-            "UPDATE Servizi SET nome=?, username=?, password_cifrata=? WHERE id=?",
-            ("prime video", "luca@mail.it", "nuova cifrata", row[0]),
-            conn=conn
-        )
-        row = fetch("SELECT * FROM Servizi WHERE username = ?", ("luca@mail.it",), conn=conn)[0]
-        assert row[1] == "prime video"
-        assert row[2] == "luca@mail.it"
-        assert row[3] == "nuova cifrata"
-
-        # Cancellazione servizio
-        esegui("DELETE FROM Servizi WHERE id=?", (row[0],), conn=conn)
-        rows = fetch("SELECT * FROM Servizi WHERE username = ?", ("luca@mail.it",), conn=conn)
-        assert rows == []
+    assert db.get_utente(utente, hash_password) is not None

@@ -99,10 +99,10 @@ class GestoreDatabase:
         )
         self.conn.commit()
 
-    def get_utente(self, utente, hash_password):
+    def get_utente(self, utente):
         self.cur.execute(
-            "SELECT id, utente, hash_password, salt FROM Utenti WHERE utente = ? AND hash_password = ?",
-            (utente, hash_password)
+            "SELECT id, utente, hash_password, salt FROM Utenti WHERE utente = ?",
+            (utente)
         )
         return self.cur.fetchone()
 

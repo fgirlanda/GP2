@@ -1,36 +1,34 @@
 from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget
 # from gestore_password.controller.controller_login import Login
-from gestore_password.controller.controller_registrati import Registrazione
+from controller.controller_registrati import Registrazione
+from utility.gestore_database import GestoreDatabase
 
 
 class MainApp(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Gestore Password")
+        self.setWindowTitle("Gestore Password - Login")
 
         # Crea uno stacked widget
         self.stack = QStackedWidget()
         self.setCentralWidget(self.stack)
 
         # Inizializza le varie finestre
-        # self.login_page = Login()
-        self.registrazione_page = Registrazione()
+        self.inizializza_pagine()
 
-        # Aggiungile allo stack
-        # self.stack.addWidget(self.login_page)          # index 0
-        self.stack.addWidget(self.registrazione_page)  # index 1
-
-        # Mostra login di default
+    def apri_registrazione(self):
         self.stack.setCurrentIndex(1)
-        self.resize(self.stack.currentWidget().sizeHint())
+        self.setWindowTitle("Gestore Password - Registrati")
+        self.ridimensiona(self.pag_registrazione)
 
-        # Collega pulsanti per cambiare finestra
-        # self.login_page.ui.reg_btn.goto_registrazione.clicked.connect(
-        #     lambda: self.stack.setCurrentWidget(self.registrazione_page)
-        # )
-        # self.registrazione_page.ui.reg_btn_crea_utente.clicked.connect(
-        #     lambda: self.stack.setCurrentWidget(self.login_page)
-        # )
+    def ridimensiona(self, pagina):
+        self.resize(pagina)
+
+    def inizializza_pagine(self):
+        self.db = GestoreDatabase()
+        self.pag_registrazione = Registrazione(self.db)
+        self.stack.addWidget(self.pag_registrazione)
+        self.stack.setCurrentIndex(1)
 
 
 if __name__ == "__main__":

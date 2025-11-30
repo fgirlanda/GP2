@@ -7,6 +7,7 @@ from utility.gestore_database import GestoreDatabase
 
 class Login(QMainWindow):
     login_successo = pyqtSignal(tuple)
+    login_fallito = pyqtSignal()
 
     def __init__(self, db: GestoreDatabase):
         super().__init__()
@@ -21,10 +22,12 @@ class Login(QMainWindow):
     def prova_login(self):
         utente = self.ui.login_edit_utente.text()
         raw_password = self.ui.login_edit_password.text()
-        password_cifrata = genera_hash(raw_password)
         dati_utente = self.db.get_utente(utente)
-        hash = dati_utente[2]
-        if verifica_password(password_cifrata, hash):
-            self.login_successo.emit(dati_utente)
+        if dati_utente:
+            hash = dati_utente[2]
+            if verifica_password(raw_password, hash):
+                self.login_successo.emit(dati_utente)
+            else:
+                self.login_fallito.emit()
         else:
-            self.login_successo.emit(None)
+            self.login_fallito.emit()

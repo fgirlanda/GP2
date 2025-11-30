@@ -1,10 +1,13 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtCore import pyqtSignal
 from views.view_registrati import Ui_MainWindow
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
 
 
 class Registrazione(QMainWindow):
+    utente_creato = pyqtSignal()
+
     def __init__(self, db: GestoreDatabase):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -22,3 +25,4 @@ class Registrazione(QMainWindow):
         salt_servizi = os.urandom(16)
         dati_utente = (utente, password_cifrata, salt_servizi)
         self.db.inserisci_utente(dati_utente)
+        self.utente_creato.emit()

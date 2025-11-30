@@ -102,7 +102,7 @@ class GestoreDatabase:
     def get_utente(self, utente):
         self.cur.execute(
             "SELECT id, utente, hash_password, salt FROM Utenti WHERE utente = ?",
-            (utente)
+            (utente,)
         )
         return self.cur.fetchone()
 

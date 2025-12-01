@@ -13,12 +13,10 @@ class Login(QWidget):
         super().__init__()
         self.ui = Ui_Login()
         self.ui.setupUi(self)
-        # self.ui.verticalLayout.insertStretch(1, 1)
-        # self.ui.verticalLayout.addStretch(2)
-        # Imposta lo spacing tra gli elementi
-        self.ui.verticalLayout.setSpacing(10)
-        self.ui.verticalLayout.setContentsMargins(20, 20, 20, 20)
-        self.ui.verticalLayout.insertStretch(0, 1)
+
+        self.ui.verticalLayout.setSpacing(15)
+        self.ui.verticalLayout.setContentsMargins(50, 20, 50, 20)
+        # self.ui.verticalLayout.insertStretch(3, 1)
         self.ui.verticalLayout.addStretch(1)
         self.titolo = "Gestore Password - Login"
         self.db = db

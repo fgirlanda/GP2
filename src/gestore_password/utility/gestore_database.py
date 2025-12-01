@@ -145,7 +145,7 @@ class GestoreDatabase:
 
         cursor = self.conn.cursor()
         cursor.execute(
-            "SELECT id, nome, username, password_cifrata FROM Servizi WHERE idUtente = ?",
+            "SELECT id, nome, username, password_cifrata FROM Servizi WHERE id_utente = ?",
             (id_utente,)
         )
         return cursor.fetchall()

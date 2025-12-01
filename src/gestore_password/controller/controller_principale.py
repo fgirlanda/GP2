@@ -14,5 +14,12 @@ class Principale(QMainWindow):
 
     def set_utente_loggato(self, utente: tuple, raw_pass: str):
         self.utente_loggato = utente
+        self.set_dati_utente(utente[1], raw_pass)
+        self.mostra_servizi(utente[0])
+
+    def set_dati_utente(self, utente: str, raw_pass: str):
         self.ui.main_dlbl_utente.setText(utente[1])
         self.ui.main_dlbl_password.setText(raw_pass)
+
+    def mostra_servizi(self, id_utente: int):
+        self.servizi = self.db.get_servizi_per_utente(id_utente)

@@ -9,15 +9,18 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(652, 536)
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.centralwidget)
+class Ui_Main(object):
+    def setupUi(self, Main):
+        Main.setObjectName("Main")
+        Main.resize(611, 300)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Main.sizePolicy().hasHeightForWidth())
+        Main.setSizePolicy(sizePolicy)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(Main)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.tabWidget = QtWidgets.QTabWidget(parent=self.centralwidget)
+        self.tabWidget = QtWidgets.QTabWidget(parent=Main)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
@@ -132,32 +135,31 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addLayout(self.horizontalLayout_2)
         self.tabWidget.addTab(self.tab_2, "")
         self.verticalLayout_2.addWidget(self.tabWidget)
-        MainWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(Main)
         self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(Main)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, Main):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "GP2 - Gestore Password"))
-        self.main_edit_cerca.setInputMask(_translate("MainWindow", "Cerca..."))
-        self.main_edit_cerca.setText(_translate("MainWindow", "Cerca..."))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Servizi"))
-        self.main_slbl_utente.setText(_translate("MainWindow", "Username"))
-        self.main_dlbl_utente.setText(_translate("MainWindow", "TextLabel"))
-        self.main_slbl_password.setText(_translate("MainWindow", "Password"))
-        self.main_dlbl_password.setText(_translate("MainWindow", "TextLabel"))
-        self.main_btn_modutente.setText(_translate("MainWindow", "Modifica utente"))
-        self.main_btn_logout.setText(_translate("MainWindow", "Log out"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Profilo"))
+        Main.setWindowTitle(_translate("Main", "Form"))
+        self.main_edit_cerca.setInputMask(_translate("Main", "Cerca..."))
+        self.main_edit_cerca.setText(_translate("Main", "Cerca..."))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Main", "Servizi"))
+        self.main_slbl_utente.setText(_translate("Main", "Username"))
+        self.main_dlbl_utente.setText(_translate("Main", "TextLabel"))
+        self.main_slbl_password.setText(_translate("Main", "Password"))
+        self.main_dlbl_password.setText(_translate("Main", "TextLabel"))
+        self.main_btn_modutente.setText(_translate("Main", "Modifica utente"))
+        self.main_btn_logout.setText(_translate("Main", "Log out"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Main", "Profilo"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    Main = QtWidgets.QWidget()
+    ui = Ui_Main()
+    ui.setupUi(Main)
+    Main.show()
     sys.exit(app.exec())

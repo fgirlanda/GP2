@@ -1,18 +1,25 @@
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QWidget
 from PyQt6.QtCore import pyqtSignal
-from views.view_login import Ui_MainWindow
+from views.view_login import Ui_Login
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
 
 
-class Login(QMainWindow):
+class Login(QWidget):
     login_successo = pyqtSignal(tuple, str)
     login_fallito = pyqtSignal()
 
     def __init__(self, db: GestoreDatabase):
         super().__init__()
-        self.ui = Ui_MainWindow()
+        self.ui = Ui_Login()
         self.ui.setupUi(self)
+        # self.ui.verticalLayout.insertStretch(1, 1)
+        # self.ui.verticalLayout.addStretch(2)
+        # Imposta lo spacing tra gli elementi
+        self.ui.verticalLayout.setSpacing(10)
+        self.ui.verticalLayout.setContentsMargins(20, 20, 20, 20)
+        self.ui.verticalLayout.insertStretch(0, 1)
+        self.ui.verticalLayout.addStretch(1)
         self.titolo = "Gestore Password - Login"
         self.db = db
 

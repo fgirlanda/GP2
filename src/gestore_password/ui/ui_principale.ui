@@ -1,236 +1,240 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Main</class>
+ <widget class="QWidget" name="Main">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>652</width>
-    <height>536</height>
+    <width>611</width>
+    <height>300</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>GP2 - Gestore Password</string>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
-  <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Servizi</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <property name="sizeConstraint">
-           <enum>QLayout::SetMaximumSize</enum>
-          </property>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <property name="spacing">
-             <number>20</number>
-            </property>
-            <property name="rightMargin">
-             <number>300</number>
-            </property>
-            <item>
-             <widget class="QLineEdit" name="main_edit_cerca">
-              <property name="inputMask">
-               <string>Cerca...</string>
-              </property>
-              <property name="text">
-               <string>Cerca...</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="main_btn_cerca">
-              <property name="cursor">
-               <cursorShape>OpenHandCursor</cursorShape>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">background-color: rgb(144, 144, 144);</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>../resources/cerca.png</normaloff>../resources/cerca.png</iconset>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <widget class="QTableView" name="main_tbl_servizi"/>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Profilo</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <property name="leftMargin">
-           <number>200</number>
-          </property>
-          <property name="rightMargin">
-           <number>200</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="main_slbl_utente">
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Username</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="main_dlbl_utente">
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>200</number>
-          </property>
-          <property name="rightMargin">
-           <number>165</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="main_slbl_password">
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Password</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="main_dlbl_password">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="main_btn_visibility_pass">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>../resources/visible.png</normaloff>../resources/visible.png</iconset>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>125</number>
-          </property>
-          <property name="rightMargin">
-           <number>125</number>
-          </property>
-          <item>
-           <widget class="QPushButton" name="main_btn_modutente">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Modifica utente</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="main_btn_logout">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Log out</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </widget>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Servizi</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetMaximumSize</enum>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>20</number>
+           </property>
+           <property name="rightMargin">
+            <number>300</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="main_edit_cerca">
+             <property name="inputMask">
+              <string>Cerca...</string>
+             </property>
+             <property name="text">
+              <string>Cerca...</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="main_btn_cerca">
+             <property name="cursor">
+              <cursorShape>OpenHandCursor</cursorShape>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(144, 144, 144);</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../resources/cerca.png</normaloff>../resources/cerca.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QTableView" name="main_tbl_servizi"/>
+         </item>
+        </layout>
+       </item>
+      </layout>
      </widget>
-    </item>
-   </layout>
-  </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Profilo</string>
+      </attribute>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="leftMargin">
+          <number>200</number>
+         </property>
+         <property name="rightMargin">
+          <number>200</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="main_slbl_utente">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Username</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="main_dlbl_utente">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>200</number>
+         </property>
+         <property name="rightMargin">
+          <number>165</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="main_slbl_password">
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="main_dlbl_password">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="main_btn_visibility_pass">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../resources/visible.png</normaloff>../resources/visible.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>125</number>
+         </property>
+         <property name="rightMargin">
+          <number>125</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="main_btn_modutente">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Modifica utente</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="main_btn_logout">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Log out</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

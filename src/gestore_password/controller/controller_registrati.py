@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6.QtCore import pyqtSignal
-from views.view_registrati import Ui_MainWindow
+from views.view_registrati import Ui_Registrazione
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
 
@@ -10,7 +10,7 @@ class Registrazione(QMainWindow):
 
     def __init__(self, db: GestoreDatabase):
         super().__init__()
-        self.ui = Ui_MainWindow()
+        self.ui = Ui_Registrazione()
         self.ui.setupUi(self)
         self.titolo = "Gestore Password - Registrati"
         self.db = db

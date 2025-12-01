@@ -12,5 +12,7 @@ class Principale(QMainWindow):
         self.titolo = "Gestore Password"
         self.db = db
 
-    def set_utente_loggato(self, utente: tuple):
+    def set_utente_loggato(self, utente: tuple, raw_pass: str):
         self.utente_loggato = utente
+        self.ui.main_dlbl_utente.setText(utente[1])
+        self.ui.main_dlbl_password.setText(raw_pass)

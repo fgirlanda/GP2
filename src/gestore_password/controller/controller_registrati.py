@@ -1,17 +1,21 @@
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QWidget
 from PyQt6.QtCore import pyqtSignal
 from views.view_registrati import Ui_Registrazione
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
 
 
-class Registrazione(QMainWindow):
+class Registrazione(QWidget):
     utente_creato = pyqtSignal()
 
     def __init__(self, db: GestoreDatabase):
         super().__init__()
         self.ui = Ui_Registrazione()
         self.ui.setupUi(self)
+        self.ui.verticalLayout.setSpacing(10)
+        self.ui.verticalLayout.setContentsMargins(20, 20, 20, 20)
+        self.ui.verticalLayout.insertStretch(0, 1)
+        self.ui.verticalLayout.addStretch(1)
         self.titolo = "Gestore Password - Registrati"
         self.db = db
 

@@ -13,18 +13,22 @@ class Ui_Registrazione(object):
     def setupUi(self, Registrazione):
         Registrazione.setObjectName("Registrazione")
         Registrazione.resize(400, 300)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(Registrazione.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            Registrazione.sizePolicy().hasHeightForWidth())
         Registrazione.setSizePolicy(sizePolicy)
+        Registrazione.setMinimumSize(QtCore.QSize(400, 300))
         self.verticalLayout = QtWidgets.QVBoxLayout(Registrazione)
         self.verticalLayout.setObjectName("verticalLayout")
         self.reg_slbl_titolo = QtWidgets.QLabel(parent=Registrazione)
         font = QtGui.QFont()
         font.setPointSize(36)
         self.reg_slbl_titolo.setFont(font)
-        self.reg_slbl_titolo.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.reg_slbl_titolo.setLayoutDirection(
+            QtCore.Qt.LayoutDirection.LeftToRight)
         self.reg_slbl_titolo.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.reg_slbl_titolo.setObjectName("reg_slbl_titolo")
         self.verticalLayout.addWidget(self.reg_slbl_titolo)
@@ -87,7 +91,8 @@ class Ui_Registrazione(object):
         self.reg_slbl_titolo.setText(_translate("Registrazione", "REGISTRATI"))
         self.reg_slbl_utente.setText(_translate("Registrazione", "Utente"))
         self.reg_slbl_password.setText(_translate("Registrazione", "Password"))
-        self.reg_btn_crea_utente.setText(_translate("Registrazione", "Crea utente"))
+        self.reg_btn_crea_utente.setText(
+            _translate("Registrazione", "Crea utente"))
         self.reg_btn_annulla.setText(_translate("Registrazione", "Annulla"))
 
 

@@ -1,10 +1,10 @@
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QWidget
 from views.view_principale import Ui_Main
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
 
 
-class Principale(QMainWindow):
+class Principale(QWidget):
     def __init__(self, db: GestoreDatabase):
         super().__init__()
         self.ui = Ui_Main()

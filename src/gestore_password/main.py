@@ -52,12 +52,8 @@ class MainApp(QMainWindow):
 
     def cambia_pagina(self, pagina):
         self.stack.setCurrentWidget(pagina)
-        self.ridimensiona(pagina)
         if hasattr(pagina, "titolo"):
             self.setWindowTitle(pagina.titolo)
-
-    def ridimensiona(self, pagina: QMainWindow):
-        self.resize(pagina.sizeHint())
 
 
 if __name__ == "__main__":

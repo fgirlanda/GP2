@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget
+from PyQt6.QtWidgets import QWidget, QHeaderView
 from views.view_principale import Ui_Main
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
@@ -11,6 +11,7 @@ class Principale(QWidget):
         self.ui.setupUi(self)
         self.titolo = "Gestore Password"
         self.db = db
+        self.setup_tabella()
 
     def set_utente_loggato(self, utente: tuple, raw_pass: str):
         self.utente_loggato = utente
@@ -23,3 +24,10 @@ class Principale(QWidget):
 
     def mostra_servizi(self, id_utente: int):
         self.servizi = self.db.get_servizi_per_utente(id_utente)
+
+    def setup_tabella(self):
+        self.ui.main_tbl_servizi.setColumnCount(4)
+        self.ui.main_tbl_servizi.setHorizontalHeaderLabels(
+            ["Servizio", "Username", "Password", "Azioni"])
+        self.ui.main_tbl_servizi.horizontalHeader().setSectionResizeMode(
+            QHeaderView.ResizeMode.Stretch)

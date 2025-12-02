@@ -13,7 +13,8 @@ class Ui_Main(object):
     def setupUi(self, Main):
         Main.setObjectName("Main")
         Main.resize(693, 448)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Main.sizePolicy().hasHeightForWidth())
@@ -21,10 +22,12 @@ class Ui_Main(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Main)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.tabWidget = QtWidgets.QTabWidget(parent=Main)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy)
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
@@ -32,7 +35,8 @@ class Ui_Main(object):
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.tab)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetMaximumSize)
+        self.verticalLayout.setSizeConstraint(
+            QtWidgets.QLayout.SizeConstraint.SetMaximumSize)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setContentsMargins(-1, -1, 0, -1)
@@ -42,22 +46,26 @@ class Ui_Main(object):
         self.main_edit_cerca.setObjectName("main_edit_cerca")
         self.horizontalLayout.addWidget(self.main_edit_cerca)
         self.main_btn_cerca = QtWidgets.QPushButton(parent=self.tab)
-        self.main_btn_cerca.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.OpenHandCursor))
+        self.main_btn_cerca.setCursor(QtGui.QCursor(
+            QtCore.Qt.CursorShape.OpenHandCursor))
         self.main_btn_cerca.setAutoFillBackground(False)
         self.main_btn_cerca.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui\\../../resources/cerca.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap("ui\\../../resources/cerca.png"),
+                       QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.main_btn_cerca.setIcon(icon)
         self.main_btn_cerca.setObjectName("main_btn_cerca")
         self.horizontalLayout.addWidget(self.main_btn_cerca)
-        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(
+            40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.main_btn_aggiungi = QtWidgets.QPushButton(parent=self.tab)
-        self.main_btn_aggiungi.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.main_btn_aggiungi.setLayoutDirection(
+            QtCore.Qt.LayoutDirection.LeftToRight)
         self.main_btn_aggiungi.setObjectName("main_btn_aggiungi")
         self.horizontalLayout.addWidget(self.main_btn_aggiungi)
         self.verticalLayout.addLayout(self.horizontalLayout)
-        self.main_tbl_servizi = QtWidgets.QTableView(parent=self.tab)
+        self.main_tbl_servizi = QtWidgets.QTableWidget(parent=self.tab)
         self.main_tbl_servizi.setObjectName("main_tbl_servizi")
         self.verticalLayout.addWidget(self.main_tbl_servizi)
         self.verticalLayout_3.addLayout(self.verticalLayout)
@@ -93,25 +101,31 @@ class Ui_Main(object):
         self.main_slbl_password.setObjectName("main_slbl_password")
         self.horizontalLayout_4.addWidget(self.main_slbl_password)
         self.main_dlbl_password = QtWidgets.QLabel(parent=self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_dlbl_password.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.main_dlbl_password.sizePolicy().hasHeightForWidth())
         self.main_dlbl_password.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.main_dlbl_password.setFont(font)
         self.main_dlbl_password.setObjectName("main_dlbl_password")
         self.horizontalLayout_4.addWidget(self.main_dlbl_password)
-        self.main_btn_visibility_pass = QtWidgets.QPushButton(parent=self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.main_btn_visibility_pass = QtWidgets.QPushButton(
+            parent=self.tab_2)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_btn_visibility_pass.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.main_btn_visibility_pass.sizePolicy().hasHeightForWidth())
         self.main_btn_visibility_pass.setSizePolicy(sizePolicy)
         self.main_btn_visibility_pass.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("ui\\../resources/visible.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap("ui\\../resources/visible.png"),
+                        QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.main_btn_visibility_pass.setIcon(icon1)
         self.main_btn_visibility_pass.setObjectName("main_btn_visibility_pass")
         self.horizontalLayout_4.addWidget(self.main_btn_visibility_pass)
@@ -121,10 +135,12 @@ class Ui_Main(object):
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.main_btn_modutente = QtWidgets.QPushButton(parent=self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_btn_modutente.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.main_btn_modutente.sizePolicy().hasHeightForWidth())
         self.main_btn_modutente.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -132,10 +148,12 @@ class Ui_Main(object):
         self.main_btn_modutente.setObjectName("main_btn_modutente")
         self.horizontalLayout_2.addWidget(self.main_btn_modutente)
         self.main_btn_logout = QtWidgets.QPushButton(parent=self.tab_2)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.main_btn_logout.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.main_btn_logout.sizePolicy().hasHeightForWidth())
         self.main_btn_logout.setSizePolicy(sizePolicy)
         font = QtGui.QFont()
         font.setPointSize(14)
@@ -156,14 +174,16 @@ class Ui_Main(object):
         self.main_edit_cerca.setInputMask(_translate("Main", "Cerca..."))
         self.main_edit_cerca.setText(_translate("Main", "Cerca..."))
         self.main_btn_aggiungi.setText(_translate("Main", "Aggiungi Servizio"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Main", "Servizi"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(
+            self.tab), _translate("Main", "Servizi"))
         self.main_slbl_utente.setText(_translate("Main", "Username"))
         self.main_dlbl_utente.setText(_translate("Main", "TextLabel"))
         self.main_slbl_password.setText(_translate("Main", "Password"))
         self.main_dlbl_password.setText(_translate("Main", "TextLabel"))
         self.main_btn_modutente.setText(_translate("Main", "Modifica utente"))
         self.main_btn_logout.setText(_translate("Main", "Log out"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Main", "Profilo"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(
+            self.tab_2), _translate("Main", "Profilo"))
 
 
 if __name__ == "__main__":

@@ -12,13 +12,9 @@ class Registrazione(QWidget):
         super().__init__()
         self.ui = Ui_Registrazione()
         self.ui.setupUi(self)
-        self.ui.verticalLayout.setSpacing(15)
-        self.ui.verticalLayout.setContentsMargins(50, 20, 50, 20)
-        self.ui.verticalLayout.addStretch(1)
         self.titolo = "Gestore Password - Registrati"
         self.db = db
 
-        # Nota: i widget ora stanno dentro self.ui
         self.ui.reg_btn_crea_utente.clicked.connect(self.registrati)
 
     def registrati(self):

@@ -13,71 +13,145 @@ class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName("Login")
         Login.resize(400, 300)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Policy.Expanding,
+            QtWidgets.QSizePolicy.Policy.Expanding
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Login.sizePolicy().hasHeightForWidth())
         Login.setSizePolicy(sizePolicy)
         Login.setMinimumSize(QtCore.QSize(400, 300))
+
+        # Layout principale
         self.verticalLayout = QtWidgets.QVBoxLayout(Login)
+        self.verticalLayout.setContentsMargins(40, 30, 40, 30)
+        self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
+
+        # Spacer superiore per centrare verticalmente
+        spacerTop = QtWidgets.QSpacerItem(
+            20, 40,
+            QtWidgets.QSizePolicy.Policy.Minimum,
+            QtWidgets.QSizePolicy.Policy.Expanding
+        )
+        self.verticalLayout.addItem(spacerTop)
+
+        # Titolo
         self.login_slbl_titolo = QtWidgets.QLabel(parent=Login)
         font = QtGui.QFont()
         font.setPointSize(36)
+        font.setBold(True)
         self.login_slbl_titolo.setFont(font)
-        self.login_slbl_titolo.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.login_slbl_titolo.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.login_slbl_titolo.setAlignment(
+            QtCore.Qt.AlignmentFlag.AlignCenter)
         self.login_slbl_titolo.setObjectName("login_slbl_titolo")
         self.verticalLayout.addWidget(self.login_slbl_titolo)
-        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_4.setContentsMargins(50, -1, 50, -1)
-        self.horizontalLayout_4.setSpacing(27)
-        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+
+        # Spacer tra titolo e form
+        spacerTitleForm = QtWidgets.QSpacerItem(
+            20, 20,
+            QtWidgets.QSizePolicy.Policy.Minimum,
+            QtWidgets.QSizePolicy.Policy.Fixed
+        )
+        self.verticalLayout.addItem(spacerTitleForm)
+
+        # Form Layout per i campi (allinea automaticamente le label)
+        self.formLayout = QtWidgets.QFormLayout()
+        self.formLayout.setContentsMargins(50, 0, 50, 0)
+        self.formLayout.setHorizontalSpacing(20)
+        self.formLayout.setVerticalSpacing(15)
+        self.formLayout.setObjectName("formLayout")
+
+        # Campo Utente
         self.login_slbl_utente = QtWidgets.QLabel(parent=Login)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.login_slbl_utente.setFont(font)
         self.login_slbl_utente.setObjectName("login_slbl_utente")
-        self.horizontalLayout_4.addWidget(self.login_slbl_utente)
+
         self.login_edit_utente = QtWidgets.QLineEdit(parent=Login)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.login_edit_utente.setFont(font)
+        self.login_edit_utente.setMinimumHeight(35)
         self.login_edit_utente.setObjectName("login_edit_utente")
-        self.horizontalLayout_4.addWidget(self.login_edit_utente)
-        self.verticalLayout.addLayout(self.horizontalLayout_4)
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setContentsMargins(50, -1, 50, -1)
-        self.horizontalLayout.setObjectName("horizontalLayout")
+
+        self.formLayout.addRow(self.login_slbl_utente, self.login_edit_utente)
+
+        # Campo Password
         self.login_slbl_password = QtWidgets.QLabel(parent=Login)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.login_slbl_password.setFont(font)
         self.login_slbl_password.setObjectName("login_slbl_password")
-        self.horizontalLayout.addWidget(self.login_slbl_password)
+
         self.login_edit_password = QtWidgets.QLineEdit(parent=Login)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.login_edit_password.setFont(font)
-        self.login_edit_password.setText("")
+        self.login_edit_password.setMinimumHeight(35)
+        self.login_edit_password.setEchoMode(
+            QtWidgets.QLineEdit.EchoMode.Password)
         self.login_edit_password.setObjectName("login_edit_password")
-        self.horizontalLayout.addWidget(self.login_edit_password)
-        self.verticalLayout.addLayout(self.horizontalLayout)
+
+        self.formLayout.addRow(self.login_slbl_password,
+                               self.login_edit_password)
+
+        self.verticalLayout.addLayout(self.formLayout)
+
+        # Spacer tra form e bottoni
+        spacerFormButtons = QtWidgets.QSpacerItem(
+            20, 20,
+            QtWidgets.QSizePolicy.Policy.Minimum,
+            QtWidgets.QSizePolicy.Policy.Fixed
+        )
+        self.verticalLayout.addItem(spacerFormButtons)
+
+        # Layout pulsanti centrato
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setSpacing(20)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+
+        spacerBtnLeft = QtWidgets.QSpacerItem(
+            40, 20,
+            QtWidgets.QSizePolicy.Policy.Expanding,
+            QtWidgets.QSizePolicy.Policy.Minimum
+        )
+        self.horizontalLayout_5.addItem(spacerBtnLeft)
+
         self.login_btn_login = QtWidgets.QPushButton(parent=Login)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.login_btn_login.setFont(font)
+        self.login_btn_login.setMinimumSize(QtCore.QSize(120, 40))
         self.login_btn_login.setObjectName("login_btn_login")
         self.horizontalLayout_5.addWidget(self.login_btn_login)
+
         self.login_btn_registrati = QtWidgets.QPushButton(parent=Login)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.login_btn_registrati.setFont(font)
+        self.login_btn_registrati.setMinimumSize(QtCore.QSize(120, 40))
         self.login_btn_registrati.setObjectName("login_btn_registrati")
         self.horizontalLayout_5.addWidget(self.login_btn_registrati)
+
+        spacerBtnRight = QtWidgets.QSpacerItem(
+            40, 20,
+            QtWidgets.QSizePolicy.Policy.Expanding,
+            QtWidgets.QSizePolicy.Policy.Minimum
+        )
+        self.horizontalLayout_5.addItem(spacerBtnRight)
+
         self.verticalLayout.addLayout(self.horizontalLayout_5)
+
+        # Spacer inferiore
+        spacerBottom = QtWidgets.QSpacerItem(
+            20, 40,
+            QtWidgets.QSizePolicy.Policy.Minimum,
+            QtWidgets.QSizePolicy.Policy.Expanding
+        )
+        self.verticalLayout.addItem(spacerBottom)
 
         self.retranslateUi(Login)
         QtCore.QMetaObject.connectSlotsByName(Login)

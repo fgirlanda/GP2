@@ -7,6 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+from utility.gestore_path import *
 
 
 class Ui_Main(object):
@@ -79,7 +80,7 @@ class Ui_Main(object):
         self.main_btn_cerca.setMinimumSize(QtCore.QSize(30, 30))
         self.main_btn_cerca.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("resources/cerca.png"),
+        icon.addPixmap(QtGui.QPixmap(get_resource_path("cerca.png")),
                        QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.main_btn_cerca.setIcon(icon)
         self.main_btn_cerca.setObjectName("main_btn_cerca")
@@ -206,7 +207,7 @@ class Ui_Main(object):
         self.main_btn_visibility_pass.setCursor(
             QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("resources/visible.png"),
+        icon1.addPixmap(QtGui.QPixmap(get_resource_path("visible.png")),
                         QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.main_btn_visibility_pass.setIcon(icon1)
         self.main_btn_visibility_pass.setObjectName("main_btn_visibility_pass")

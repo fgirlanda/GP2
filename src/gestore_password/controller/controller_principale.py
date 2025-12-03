@@ -14,8 +14,7 @@ class Principale(QWidget):
         self.ui.setupUi(self)
         self.titolo = "Gestore Password"
         self.db = db
-        self.ui.main_btn_aggiungi.clicked.connect(
-            lambda: self.apri_dialog_aggiungi())
+        self.ui.main_btn_aggiungi.clicked.connect(self.apri_dialog_aggiungi)
 
     def apri_dialog_aggiungi(self):
         dialog_aggiungi = Dialog_Aggiungi(self)

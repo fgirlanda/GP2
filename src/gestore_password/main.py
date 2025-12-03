@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QStackedWidget, QMessageB
 from controller.controller_login import Login
 from controller.controller_registrati import Registrazione
 from controller.controller_principale import Principale
+from controller.controller_aggiungi_servizio import Dialog_Aggiungi
 from utility.gestore_database import GestoreDatabase
 
 

@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
+class Ui_Dialog_Aggiungi(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(403, 356)
@@ -70,13 +70,14 @@ class Ui_Dialog(object):
         font.setPointSize(14)
         self.aser_dlg_btns.setFont(font)
         self.aser_dlg_btns.setOrientation(QtCore.Qt.Orientation.Horizontal)
-        self.aser_dlg_btns.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Cancel|QtWidgets.QDialogButtonBox.StandardButton.Ok)
+        self.aser_dlg_btns.setStandardButtons(
+            QtWidgets.QDialogButtonBox.StandardButton.Cancel | QtWidgets.QDialogButtonBox.StandardButton.Ok)
         self.aser_dlg_btns.setObjectName("aser_dlg_btns")
         self.verticalLayout_2.addWidget(self.aser_dlg_btns)
 
         self.retranslateUi(Dialog)
-        self.aser_dlg_btns.accepted.connect(Dialog.accept) # type: ignore
-        self.aser_dlg_btns.rejected.connect(Dialog.reject) # type: ignore
+        self.aser_dlg_btns.accepted.connect(Dialog.accept)  # type: ignore
+        self.aser_dlg_btns.rejected.connect(Dialog.reject)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
@@ -91,7 +92,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_Dialog_Aggiungi()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec())

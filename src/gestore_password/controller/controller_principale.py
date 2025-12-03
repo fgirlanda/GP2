@@ -4,6 +4,7 @@ from views.view_principale import Ui_Main
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
 from utility.gestore_path import *
+from controller.controller_aggiungi_servizio import Dialog_Aggiungi
 
 
 class Principale(QWidget):
@@ -13,6 +14,12 @@ class Principale(QWidget):
         self.ui.setupUi(self)
         self.titolo = "Gestore Password"
         self.db = db
+        self.ui.main_btn_aggiungi.clicked.connect(
+            lambda: self.apri_dialog_aggiungi())
+
+    def apri_dialog_aggiungi(self):
+        dialog_aggiungi = Dialog_Aggiungi(self)
+        risultato = dialog_aggiungi.exec()
 
     def set_utente_loggato(self, utente: tuple, raw_pass: str):
         self.utente_loggato = utente

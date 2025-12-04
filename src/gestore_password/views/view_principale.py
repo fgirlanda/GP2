@@ -7,273 +7,177 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from utility.gestore_path import *
 
 
 class Ui_Main(object):
     def setupUi(self, Main):
         Main.setObjectName("Main")
         Main.resize(823, 576)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Main.sizePolicy().hasHeightForWidth())
         Main.setSizePolicy(sizePolicy)
         Main.setMinimumSize(QtCore.QSize(600, 400))
-
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(Main)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-
-        # TabWidget
         self.tabWidget = QtWidgets.QTabWidget(parent=Main)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.tabWidget.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy)
         self.tabWidget.setObjectName("tabWidget")
-
-        # ==================== TAB 1 - SERVIZI ====================
         self.main_tab1 = QtWidgets.QWidget()
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.main_tab1.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.main_tab1.sizePolicy().hasHeightForWidth())
         self.main_tab1.setSizePolicy(sizePolicy)
         self.main_tab1.setObjectName("main_tab1")
-
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.main_tab1)
         self.verticalLayout_3.setContentsMargins(15, 15, 15, 15)
         self.verticalLayout_3.setSpacing(10)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-
         self.main_vlay_tab1 = QtWidgets.QVBoxLayout()
         self.main_vlay_tab1.setSpacing(10)
         self.main_vlay_tab1.setObjectName("main_vlay_tab1")
-
-        # Barra ricerca
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setSpacing(10)
         self.horizontalLayout.setObjectName("horizontalLayout")
-
         self.main_edit_cerca = QtWidgets.QLineEdit(parent=self.main_tab1)
-        self.main_edit_cerca.setMinimumHeight(30)
+        self.main_edit_cerca.setMinimumSize(QtCore.QSize(0, 30))
         self.main_edit_cerca.setObjectName("main_edit_cerca")
         self.horizontalLayout.addWidget(self.main_edit_cerca)
-
         self.main_btn_cerca = QtWidgets.QPushButton(parent=self.main_tab1)
-        self.main_btn_cerca.setCursor(QtGui.QCursor(
-            QtCore.Qt.CursorShape.PointingHandCursor))
         self.main_btn_cerca.setMinimumSize(QtCore.QSize(30, 30))
+        self.main_btn_cerca.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.main_btn_cerca.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(get_resource_path("cerca.png")),
-                       QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.main_btn_cerca.setIcon(icon)
         self.main_btn_cerca.setObjectName("main_btn_cerca")
         self.horizontalLayout.addWidget(self.main_btn_cerca)
-
-        spacerItem = QtWidgets.QSpacerItem(
-            40, 20,
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Minimum
-        )
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-
         self.main_btn_aggiungi = QtWidgets.QPushButton(parent=self.main_tab1)
-        self.main_btn_aggiungi.setMinimumHeight(30)
+        self.main_btn_aggiungi.setMinimumSize(QtCore.QSize(0, 30))
         self.main_btn_aggiungi.setObjectName("main_btn_aggiungi")
         self.horizontalLayout.addWidget(self.main_btn_aggiungi)
-
         self.main_vlay_tab1.addLayout(self.horizontalLayout)
-
-        # Tabella servizi
         self.main_tbl_servizi = QtWidgets.QTableWidget(parent=self.main_tab1)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(1)
+        sizePolicy.setHeightForWidth(self.main_tbl_servizi.sizePolicy().hasHeightForWidth())
         self.main_tbl_servizi.setSizePolicy(sizePolicy)
         self.main_tbl_servizi.setObjectName("main_tbl_servizi")
         self.main_tbl_servizi.setColumnCount(0)
         self.main_tbl_servizi.setRowCount(0)
         self.main_vlay_tab1.addWidget(self.main_tbl_servizi)
-
         self.verticalLayout_3.addLayout(self.main_vlay_tab1)
         self.tabWidget.addTab(self.main_tab1, "")
-
-        # ==================== TAB 2 - PROFILO ====================
         self.main_tab_2 = QtWidgets.QWidget()
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.main_tab_2.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.main_tab_2.sizePolicy().hasHeightForWidth())
         self.main_tab_2.setSizePolicy(sizePolicy)
         self.main_tab_2.setObjectName("main_tab_2")
-
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.main_tab_2)
         self.verticalLayout_5.setContentsMargins(20, 20, 20, 20)
         self.verticalLayout_5.setSpacing(15)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
-
-        # Spacer superiore
-        spacerTopTab2 = QtWidgets.QSpacerItem(
-            20, 40,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
-        self.verticalLayout_5.addItem(spacerTopTab2)
-
-        # Container centrale per il profilo
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_5.addItem(spacerItem1)
+        self.main_hlay_utente_tab2 = QtWidgets.QHBoxLayout()
+        self.main_hlay_utente_tab2.setObjectName("main_hlay_utente_tab2")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.main_hlay_utente_tab2.addItem(spacerItem2)
         self.profileContainer = QtWidgets.QWidget(parent=self.main_tab_2)
-        self.profileContainer.setMaximumWidth(500)
-        self.profileContainerLayout = QtWidgets.QVBoxLayout(
-            self.profileContainer)
+        self.profileContainer.setMaximumSize(QtCore.QSize(500, 16777215))
+        self.profileContainer.setObjectName("profileContainer")
+        self.profileContainerLayout = QtWidgets.QVBoxLayout(self.profileContainer)
         self.profileContainerLayout.setContentsMargins(0, 0, 0, 0)
         self.profileContainerLayout.setSpacing(15)
-
-        # Form Layout per info utente
+        self.profileContainerLayout.setObjectName("profileContainerLayout")
         self.formLayoutProfile = QtWidgets.QFormLayout()
         self.formLayoutProfile.setHorizontalSpacing(20)
         self.formLayoutProfile.setVerticalSpacing(15)
         self.formLayoutProfile.setObjectName("formLayoutProfile")
-
-        # Username
         self.main_slbl_utente = QtWidgets.QLabel(parent=self.profileContainer)
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.main_slbl_utente.setFont(font)
         self.main_slbl_utente.setObjectName("main_slbl_utente")
-
+        self.formLayoutProfile.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.main_slbl_utente)
         self.main_dlbl_utente = QtWidgets.QLabel(parent=self.profileContainer)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.main_dlbl_utente.setFont(font)
+        self.main_dlbl_utente.setText("")
         self.main_dlbl_utente.setObjectName("main_dlbl_utente")
-
-        self.formLayoutProfile.addRow(
-            self.main_slbl_utente, self.main_dlbl_utente)
-
-        # Password row
-        self.main_slbl_password = QtWidgets.QLabel(
-            parent=self.profileContainer)
+        self.formLayoutProfile.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.main_dlbl_utente)
+        self.main_slbl_password = QtWidgets.QLabel(parent=self.profileContainer)
         font = QtGui.QFont()
         font.setPointSize(14)
         font.setBold(True)
         self.main_slbl_password.setFont(font)
         self.main_slbl_password.setObjectName("main_slbl_password")
-
+        self.formLayoutProfile.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.main_slbl_password)
         self.main_hlay_pass_tab2 = QtWidgets.QHBoxLayout()
         self.main_hlay_pass_tab2.setSpacing(10)
         self.main_hlay_pass_tab2.setObjectName("main_hlay_pass_tab2")
-
-        self.main_dlbl_password = QtWidgets.QLabel(
-            parent=self.profileContainer)
+        self.main_dlbl_password = QtWidgets.QLabel(parent=self.profileContainer)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.main_dlbl_password.setFont(font)
         self.main_dlbl_password.setObjectName("main_dlbl_password")
         self.main_hlay_pass_tab2.addWidget(self.main_dlbl_password)
-
-        self.main_btn_visibility_pass = QtWidgets.QPushButton(
-            parent=self.profileContainer)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Fixed,
-            QtWidgets.QSizePolicy.Policy.Fixed
-        )
+        self.main_btn_visibility_pass = QtWidgets.QPushButton(parent=self.profileContainer)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.main_btn_visibility_pass.sizePolicy().hasHeightForWidth())
         self.main_btn_visibility_pass.setSizePolicy(sizePolicy)
-        self.main_btn_visibility_pass.setFixedSize(30, 30)
+        self.main_btn_visibility_pass.setMinimumSize(QtCore.QSize(30, 30))
+        self.main_btn_visibility_pass.setMaximumSize(QtCore.QSize(30, 30))
+        self.main_btn_visibility_pass.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.main_btn_visibility_pass.setText("")
-        self.main_btn_visibility_pass.setCursor(
-            QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(get_resource_path("visible.png")),
-                        QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.main_btn_visibility_pass.setIcon(icon1)
         self.main_btn_visibility_pass.setObjectName("main_btn_visibility_pass")
         self.main_hlay_pass_tab2.addWidget(self.main_btn_visibility_pass)
-
-        self.main_hlay_pass_tab2.addStretch()
-
-        self.formLayoutProfile.addRow(
-            self.main_slbl_password, self.main_hlay_pass_tab2)
-
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.main_hlay_pass_tab2.addItem(spacerItem3)
+        self.formLayoutProfile.setLayout(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.main_hlay_pass_tab2)
         self.profileContainerLayout.addLayout(self.formLayoutProfile)
-
-        # Spacer tra info e bottoni
-        spacerProfileBtns = QtWidgets.QSpacerItem(
-            20, 30,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Fixed
-        )
-        self.profileContainerLayout.addItem(spacerProfileBtns)
-
-        # Layout pulsanti
+        spacerItem4 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.profileContainerLayout.addItem(spacerItem4)
         self.main_hlay_btns_tab2 = QtWidgets.QHBoxLayout()
         self.main_hlay_btns_tab2.setSpacing(15)
         self.main_hlay_btns_tab2.setObjectName("main_hlay_btns_tab2")
-
-        self.main_btn_modutente = QtWidgets.QPushButton(
-            parent=self.profileContainer)
+        self.main_btn_modutente = QtWidgets.QPushButton(parent=self.profileContainer)
+        self.main_btn_modutente.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.main_btn_modutente.setFont(font)
-        self.main_btn_modutente.setMinimumSize(QtCore.QSize(150, 40))
-        self.main_btn_modutente.setCursor(QtGui.QCursor(
-            QtCore.Qt.CursorShape.PointingHandCursor))
+        self.main_btn_modutente.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.main_btn_modutente.setObjectName("main_btn_modutente")
         self.main_hlay_btns_tab2.addWidget(self.main_btn_modutente)
-
-        self.main_btn_logout = QtWidgets.QPushButton(
-            parent=self.profileContainer)
+        self.main_btn_logout = QtWidgets.QPushButton(parent=self.profileContainer)
+        self.main_btn_logout.setMinimumSize(QtCore.QSize(150, 40))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.main_btn_logout.setFont(font)
-        self.main_btn_logout.setMinimumSize(QtCore.QSize(150, 40))
-        self.main_btn_logout.setCursor(QtGui.QCursor(
-            QtCore.Qt.CursorShape.PointingHandCursor))
+        self.main_btn_logout.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.main_btn_logout.setObjectName("main_btn_logout")
         self.main_hlay_btns_tab2.addWidget(self.main_btn_logout)
-
         self.profileContainerLayout.addLayout(self.main_hlay_btns_tab2)
-
-        # Layout per centrare il container
-        self.main_hlay_utente_tab2 = QtWidgets.QHBoxLayout()
-        self.main_hlay_utente_tab2.setObjectName("main_hlay_utente_tab2")
-        self.main_hlay_utente_tab2.addStretch()
         self.main_hlay_utente_tab2.addWidget(self.profileContainer)
-        self.main_hlay_utente_tab2.addStretch()
-
+        spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.main_hlay_utente_tab2.addItem(spacerItem5)
         self.verticalLayout_5.addLayout(self.main_hlay_utente_tab2)
-
-        # Spacer inferiore
-        spacerBottomTab2 = QtWidgets.QSpacerItem(
-            20, 40,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
-        self.verticalLayout_5.addItem(spacerBottomTab2)
-
+        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout_5.addItem(spacerItem6)
         self.tabWidget.addTab(self.main_tab_2, "")
         self.verticalLayout_2.addWidget(self.tabWidget)
 
@@ -286,16 +190,13 @@ class Ui_Main(object):
         Main.setWindowTitle(_translate("Main", "Gestore Password"))
         self.main_edit_cerca.setPlaceholderText(_translate("Main", "Cerca..."))
         self.main_btn_aggiungi.setText(_translate("Main", "Aggiungi Servizio"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(
-            self.main_tab1), _translate("Main", "Servizi"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.main_tab1), _translate("Main", "Servizi"))
         self.main_slbl_utente.setText(_translate("Main", "Username:"))
-        self.main_dlbl_utente.setText(_translate("Main", ""))
         self.main_slbl_password.setText(_translate("Main", "Password:"))
         self.main_dlbl_password.setText(_translate("Main", "••••••••"))
         self.main_btn_modutente.setText(_translate("Main", "Modifica utente"))
         self.main_btn_logout.setText(_translate("Main", "Log out"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(
-            self.main_tab_2), _translate("Main", "Profilo"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.main_tab_2), _translate("Main", "Profilo"))
 
 
 if __name__ == "__main__":

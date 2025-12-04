@@ -13,157 +13,100 @@ class Ui_Registrazione(object):
     def setupUi(self, Registrazione):
         Registrazione.setObjectName("Registrazione")
         Registrazione.resize(400, 300)
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            Registrazione.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(Registrazione.sizePolicy().hasHeightForWidth())
         Registrazione.setSizePolicy(sizePolicy)
         Registrazione.setMinimumSize(QtCore.QSize(400, 300))
-
-        # Layout principale
         self.verticalLayout = QtWidgets.QVBoxLayout(Registrazione)
         self.verticalLayout.setContentsMargins(40, 30, 40, 30)
         self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
-
-        # Spacer superiore
-        spacerTop = QtWidgets.QSpacerItem(
-            20, 40,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
-        self.verticalLayout.addItem(spacerTop)
-
-        # Titolo
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
         self.reg_slbl_titolo = QtWidgets.QLabel(parent=Registrazione)
         font = QtGui.QFont()
         font.setPointSize(36)
         font.setBold(True)
         self.reg_slbl_titolo.setFont(font)
+        self.reg_slbl_titolo.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         self.reg_slbl_titolo.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.reg_slbl_titolo.setObjectName("reg_slbl_titolo")
         self.verticalLayout.addWidget(self.reg_slbl_titolo)
-
-        # Spacer tra titolo e form
-        spacerTitleForm = QtWidgets.QSpacerItem(
-            20, 20,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Fixed
-        )
-        self.verticalLayout.addItem(spacerTitleForm)
-
-        # Form Layout per i campi
+        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.verticalLayout.addItem(spacerItem1)
         self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setContentsMargins(50, 0, 50, 0)
+        self.formLayout.setContentsMargins(50, -1, 50, -1)
         self.formLayout.setHorizontalSpacing(20)
         self.formLayout.setVerticalSpacing(15)
         self.formLayout.setObjectName("formLayout")
-
-        # Campo Utente
         self.reg_slbl_utente = QtWidgets.QLabel(parent=Registrazione)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.reg_slbl_utente.setFont(font)
         self.reg_slbl_utente.setObjectName("reg_slbl_utente")
-
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.reg_slbl_utente)
         self.reg_edit_utente = QtWidgets.QLineEdit(parent=Registrazione)
+        self.reg_edit_utente.setMinimumSize(QtCore.QSize(0, 35))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.reg_edit_utente.setFont(font)
-        self.reg_edit_utente.setMinimumHeight(35)
         self.reg_edit_utente.setObjectName("reg_edit_utente")
-
-        self.formLayout.addRow(self.reg_slbl_utente, self.reg_edit_utente)
-
-        # Campo Password
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.reg_edit_utente)
         self.reg_slbl_password = QtWidgets.QLabel(parent=Registrazione)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.reg_slbl_password.setFont(font)
         self.reg_slbl_password.setObjectName("reg_slbl_password")
-
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.reg_slbl_password)
         self.reg_edit_password = QtWidgets.QLineEdit(parent=Registrazione)
+        self.reg_edit_password.setMinimumSize(QtCore.QSize(0, 35))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.reg_edit_password.setFont(font)
-        self.reg_edit_password.setMinimumHeight(35)
-        self.reg_edit_password.setEchoMode(
-            QtWidgets.QLineEdit.EchoMode.Password)
+        self.reg_edit_password.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
+        self.reg_edit_password.setText("")
         self.reg_edit_password.setObjectName("reg_edit_password")
-
-        self.formLayout.addRow(self.reg_slbl_password, self.reg_edit_password)
-
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.reg_edit_password)
         self.verticalLayout.addLayout(self.formLayout)
-
-        # Spacer tra form e bottoni
-        spacerFormButtons = QtWidgets.QSpacerItem(
-            20, 20,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Fixed
-        )
-        self.verticalLayout.addItem(spacerFormButtons)
-
-        # Layout pulsanti centrato
+        spacerItem2 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
+        self.verticalLayout.addItem(spacerItem2)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setSpacing(20)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-
-        spacerBtnLeft = QtWidgets.QSpacerItem(
-            40, 20,
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Minimum
-        )
-        self.horizontalLayout_5.addItem(spacerBtnLeft)
-
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem3)
         self.reg_btn_crea_utente = QtWidgets.QPushButton(parent=Registrazione)
+        self.reg_btn_crea_utente.setMinimumSize(QtCore.QSize(130, 40))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.reg_btn_crea_utente.setFont(font)
-        self.reg_btn_crea_utente.setMinimumSize(QtCore.QSize(130, 40))
         self.reg_btn_crea_utente.setObjectName("reg_btn_crea_utente")
         self.horizontalLayout_5.addWidget(self.reg_btn_crea_utente)
-
         self.reg_btn_annulla = QtWidgets.QPushButton(parent=Registrazione)
+        self.reg_btn_annulla.setMinimumSize(QtCore.QSize(130, 40))
         font = QtGui.QFont()
         font.setPointSize(14)
         self.reg_btn_annulla.setFont(font)
-        self.reg_btn_annulla.setMinimumSize(QtCore.QSize(130, 40))
         self.reg_btn_annulla.setObjectName("reg_btn_annulla")
         self.horizontalLayout_5.addWidget(self.reg_btn_annulla)
-
-        spacerBtnRight = QtWidgets.QSpacerItem(
-            40, 20,
-            QtWidgets.QSizePolicy.Policy.Expanding,
-            QtWidgets.QSizePolicy.Policy.Minimum
-        )
-        self.horizontalLayout_5.addItem(spacerBtnRight)
-
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem4)
         self.verticalLayout.addLayout(self.horizontalLayout_5)
-
-        # Spacer inferiore
-        spacerBottom = QtWidgets.QSpacerItem(
-            20, 40,
-            QtWidgets.QSizePolicy.Policy.Minimum,
-            QtWidgets.QSizePolicy.Policy.Expanding
-        )
-        self.verticalLayout.addItem(spacerBottom)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        self.verticalLayout.addItem(spacerItem5)
 
         self.retranslateUi(Registrazione)
         QtCore.QMetaObject.connectSlotsByName(Registrazione)
 
     def retranslateUi(self, Registrazione):
         _translate = QtCore.QCoreApplication.translate
-        Registrazione.setWindowTitle(
-            _translate("Registrazione", "Registrazione"))
+        Registrazione.setWindowTitle(_translate("Registrazione", "Registrazione"))
         self.reg_slbl_titolo.setText(_translate("Registrazione", "REGISTRATI"))
         self.reg_slbl_utente.setText(_translate("Registrazione", "Utente"))
         self.reg_slbl_password.setText(_translate("Registrazione", "Password"))
-        self.reg_btn_crea_utente.setText(
-            _translate("Registrazione", "Crea utente"))
+        self.reg_btn_crea_utente.setText(_translate("Registrazione", "Crea utente"))
         self.reg_btn_annulla.setText(_translate("Registrazione", "Annulla"))
 
 

@@ -13,6 +13,15 @@ class Principale(QWidget):
         self.ui = Ui_Main()
         self.ui.setupUi(self)
         self.titolo = "Gestore Password"
+        icon_vis = QtGui.QIcon()
+        icon_vis.addPixmap(QtGui.QPixmap(get_resource_path("visible.png")),
+                           QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.ui.main_btn_visibility_pass.setIcon(icon_vis)
+
+        icon_search = QtGui.QIcon()
+        icon_search.addPixmap(QtGui.QPixmap(get_resource_path("cerca.png")),
+                              QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.ui.main_btn_cerca.setIcon(icon_search)
         self.db = db
         self.ui.main_btn_aggiungi.clicked.connect(self.apri_dialog_aggiungi)
 

@@ -41,6 +41,7 @@ class Principale(QWidget):
         self.utente_loggato = utente
         self.key = derive_key(raw_pass, utente[3])
         self.set_dati_utente(utente[1], raw_pass)
+        self.servizi = self.db.get_servizi_per_utente(self.utente_loggato[0])
         self.setup_tabella()
         self.popola_tabella()
 
@@ -50,16 +51,16 @@ class Principale(QWidget):
 
     def setup_tabella(self):
         self.ui.main_tbl_servizi.setColumnCount(4)
+        self.ui.main_tbl_servizi.setRowCount(len(self.servizi))
         self.ui.main_tbl_servizi.setHorizontalHeaderLabels(
             ["Servizio", "Username", "Password", "Azioni"])
         self.ui.main_tbl_servizi.horizontalHeader().setSectionResizeMode(
             QHeaderView.ResizeMode.Stretch)
 
     def popola_tabella(self):
-        self.servizi = self.db.get_servizi_per_utente(self.utente_loggato[0])
+        row = 0
         for servizio in self.servizi:
             print(servizio)
-            row = 0
             self.aggiungi_riga_servizio(servizio, row)
             row += 1
 

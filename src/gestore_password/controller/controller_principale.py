@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QGridLayout, QPushButton
+from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QGridLayout, QPushButton, QMessageBox
 from PyQt6 import QtCore, QtGui
 from views.view_principale import Ui_Main
 from utility.criptatore import *
@@ -25,9 +25,17 @@ class Principale(QWidget):
         self.db = db
         self.ui.main_btn_aggiungi.clicked.connect(self.apri_dialog_aggiungi)
 
+    def on_dialog_aggiungi_finished(self, risultato):
+        """Gestisce la chiusura del dialog"""
+        if risultato:
+            QMessageBox.information(
+                self, "Successo", "Il servizio è stato aggiunto")
+
     def apri_dialog_aggiungi(self):
-        dialog_aggiungi = Dialog_Aggiungi(self)
-        dialog_aggiungi.open()
+        self.dialog_aggiungi = Dialog_Aggiungi(
+            self.db, self.utente_loggato, self.key)
+        self.dialog_aggiungi.open()
+        self.dialog_aggiungi.finished.connect(self.on_dialog_aggiungi_finished)
 
     def set_utente_loggato(self, utente: tuple, raw_pass: str):
         self.utente_loggato = utente
@@ -50,14 +58,15 @@ class Principale(QWidget):
     def popola_tabella(self):
         self.servizi = self.db.get_servizi_per_utente(self.utente_loggato[0])
         for servizio in self.servizi:
+            print(servizio)
             row = 0
             self.aggiungi_riga_servizio(servizio, row)
             row += 1
 
     def aggiungi_riga_servizio(self, servizio: tuple, row: int):
-        nome = servizio[2]
-        username = servizio[3]
-        password = decripta(servizio[4], self.key)
+        nome = servizio[1]
+        username = servizio[2]
+        password = decripta(servizio[3], self.key)
 
         item_nome = QTableWidgetItem(nome)
         item_nome.setData(QtCore.Qt.ItemDataRole.UserRole, servizio[0])

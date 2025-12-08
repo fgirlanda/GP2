@@ -1,18 +1,18 @@
 from PyQt6.QtWidgets import QDialog, QMessageBox
-from controller.controller_principale import Principale
+from utility.gestore_database import GestoreDatabase
 from views.view_aggiungi_servizio import Ui_Dialog_Aggiungi
 from utility.criptatore import *
 
 
 class Dialog_Aggiungi(QDialog):
-    def __init__(self, parent: Principale):
+    def __init__(self, db: GestoreDatabase, utente: tuple, key: bytes, parent=None):
         super().__init__(parent)
         self.ui = Ui_Dialog_Aggiungi()
         self.ui.setupUi(self)
         self.titolo = "Gestore Password - Aggiungi Servizio"
-        self.db = parent.db
-        self.utente_loggato = parent.utente_loggato
-        self.key = parent.key
+        self.db = db
+        self.utente_loggato = utente
+        self.key = key
 
         self.ui.aser_dlg_btns.accepted.connect(self.aggiungi_servizio)
         self.ui.aser_dlg_btns.rejected.connect(self.reject)
@@ -23,7 +23,6 @@ class Dialog_Aggiungi(QDialog):
         if not self.valida_campi(dati_servizio[0], dati_servizio[1], dati_servizio[2]):
             return
         self.db.inserisci_servizio(self.utente_loggato[0], dati_servizio)
-        self.accept()
 
     def estrai_dati_servizio(self):
         nome = self.ui.aser_edit_nome.text().strip()

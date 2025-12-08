@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QGridLayout, QPushButton, QMessageBox
+from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QGridLayout, QPushButton, QMessageBox, QHBoxLayout
 from PyQt6 import QtCore, QtGui
 from views.view_principale import Ui_Main
 from utility.criptatore import *
@@ -30,6 +30,7 @@ class Principale(QWidget):
         if risultato:
             QMessageBox.information(
                 self, "Successo", "Il servizio è stato aggiunto")
+        self.dialog_aggiungi = None
 
     def apri_dialog_aggiungi(self):
         self.dialog_aggiungi = Dialog_Aggiungi(
@@ -46,7 +47,7 @@ class Principale(QWidget):
         self.popola_tabella()
 
     def set_dati_utente(self, utente: str, raw_pass: str):
-        self.ui.main_dlbl_utente.setText(utente[1])
+        self.ui.main_dlbl_utente.setText(utente)
         self.ui.main_dlbl_password.setText(raw_pass)
 
     def setup_tabella(self):
@@ -80,53 +81,51 @@ class Principale(QWidget):
         item_password.setData(QtCore.Qt.ItemDataRole.UserRole, password)
         self.ui.main_tbl_servizi.setItem(row, 2, item_password)
 
-        widget_bottoni = self.crea_bottoni_riga(servizio[0])
+        widget_bottoni = self.crea_bottoni_riga(servizio[0], row)
         self.ui.main_tbl_servizi.setCellWidget(row, 3, widget_bottoni)
 
-    def crea_bottoni_riga(self, servizio_id) -> QWidget:
+    def crea_bottoni_riga(self, servizio_id: int, row: int) -> QWidget:
         widget = QWidget()
-        layout = QGridLayout(widget)
-        layout.setSpacing(5)
+        layout = QHBoxLayout(widget)  # Usa HBoxLayout per bottoni orizzontali
+        layout.setContentsMargins(2, 2, 2, 2)
+        layout.setSpacing(2)
 
-        # Bottone elimina
-        btn_elimina = QPushButton()
-        icon_del = QtGui.QIcon()
-        icon_del.addPixmap(QtGui.QPixmap(get_resource_path("cestino.png")),
-                           QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        btn_elimina.setIcon(icon_del)
-        btn_elimina.clicked.connect(lambda: self.elimina_servizio(servizio_id))
+        # Crea bottoni più piccoli
+        btn_size = QtCore.QSize(24, 24)
 
         # Bottone mostra password
         btn_mostra = QPushButton()
-        icon_mostra = QtGui.QIcon()
-        icon_mostra.addPixmap(QtGui.QPixmap(get_resource_path("visibile.png")),
-                              QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        btn_mostra.setIcon(icon_mostra)
-        btn_mostra.clicked.connect(
-            lambda: self.mostra_password_servizio(servizio_id))
+        btn_mostra.setFixedSize(btn_size)
+        btn_mostra.setIcon(QtGui.QIcon(get_resource_path("visible.png")))
+        btn_mostra.setToolTip("Mostra/Nascondi password")
+        btn_mostra.clicked.connect(lambda: self.mostra_password_servizio(row))
 
-        # Bottone copia password
+        # Bottone copia
         btn_copia = QPushButton()
-        icon_copia = QtGui.QIcon()
-        icon_copia.addPixmap(QtGui.QPixmap(get_resource_path("copia.png")),
-                             QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        btn_copia.setIcon(icon_copia)
-        btn_copia.clicked.connect(
-            lambda: self.copia_password_servizio(servizio_id))
+        btn_copia.setFixedSize(btn_size)
+        btn_copia.setIcon(QtGui.QIcon(get_resource_path("copia.png")))
+        btn_copia.setToolTip("Copia password")
+        btn_copia.clicked.connect(lambda: self.copia_password_servizio(row))
 
-        # Bottone modifica servizio
+        # Bottone modifica
         btn_modifica = QPushButton()
-        icon_modifica = QtGui.QIcon()
-        icon_modifica.addPixmap(QtGui.QPixmap(get_resource_path("modifica.png")),
-                                QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        btn_modifica.setIcon(icon_modifica)
+        btn_modifica.setFixedSize(btn_size)
+        btn_modifica.setIcon(QtGui.QIcon(get_resource_path("modifica.png")))
+        btn_modifica.setToolTip("Modifica servizio")
         btn_modifica.clicked.connect(
-            lambda: self.modifica_password_servizio(servizio_id))
+            lambda: self.modifica_servizio(servizio_id))
 
-        layout.addWidget(btn_elimina, 0, 0)
-        layout.addWidget(btn_mostra, 0, 1)
-        layout.addWidget(btn_copia, 1, 0)
-        layout.addWidget(btn_modifica, 1, 1)
+        # Bottone elimina
+        btn_elimina = QPushButton()
+        btn_elimina.setFixedSize(btn_size)
+        btn_elimina.setIcon(QtGui.QIcon(get_resource_path("cestino.png")))
+        btn_elimina.setToolTip("Elimina servizio")
+        btn_elimina.clicked.connect(lambda: self.elimina_servizio(servizio_id))
+
+        layout.addWidget(btn_mostra)
+        layout.addWidget(btn_copia)
+        layout.addWidget(btn_modifica)
+        layout.addWidget(btn_elimina)
 
         return widget
 
@@ -139,5 +138,5 @@ class Principale(QWidget):
     def copia_password_servizio(self, servizio_id):
         pass
 
-    def modifica_password_servizio(self, servizio_id):
+    def modifica_servizio(self, servizio_id):
         pass

@@ -27,7 +27,7 @@ class Principale(QWidget):
 
     def apri_dialog_aggiungi(self):
         dialog_aggiungi = Dialog_Aggiungi(self)
-        risultato = dialog_aggiungi.exec()
+        dialog_aggiungi.open()
 
     def set_utente_loggato(self, utente: tuple, raw_pass: str):
         self.utente_loggato = utente

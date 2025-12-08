@@ -70,7 +70,7 @@ class GestoreDatabase:
 
         self.cur.execute(
             "INSERT INTO Utenti (utente, hash_password, salt) VALUES (?, ?, ?)",
-            dati
+            *dati
         )
         self.conn.commit()
 
@@ -78,7 +78,7 @@ class GestoreDatabase:
     def get_id_utente(self, dati: tuple):
         self.cur.execute(
             "SELECT id FROM Utenti WHERE utente = ? AND hash_password = ?",
-            dati
+            *dati
         )
         riga = self.cur.fetchone()
         id_utente = riga[0]
@@ -88,7 +88,7 @@ class GestoreDatabase:
     def aggiorna_dati_utente(self, id_utente: int, nuovi_dati: tuple):
         self.cur.execute(
             "UPDATE Utenti SET utente = ?, hash_password = ? WHERE id = ?",
-            (nuovi_dati, id_utente)
+            (*nuovi_dati, id_utente)
         )
         self.conn.commit()
 
@@ -116,7 +116,7 @@ class GestoreDatabase:
         cursor = self.conn.cursor()
         cursor.execute(
             "INSERT INTO Servizi (id_utente, nome, username, password_cifrata) VALUES (?, ?, ?, ?)",
-            (id_utente, dati)
+            (id_utente, *dati)
         )
         self.conn.commit()
 
@@ -128,7 +128,7 @@ class GestoreDatabase:
             """UPDATE Servizi
         SET nome = ?, username = ?, password_cifrata = ?
         WHERE id = ?""",
-            (nuovi_dati, id_servizio)
+            (*nuovi_dati, id_servizio)
         )
         self.conn.commit()
 

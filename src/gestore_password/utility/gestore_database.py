@@ -150,11 +150,11 @@ class GestoreDatabase:
         )
         return cursor.fetchall()
 
-    # def get_servizio_by_id(self, id_servizio):
+    def get_servizio_by_id(self, id_servizio):
 
-    #     cursor = self.conn.cursor()
-    #     cursor.execute(
-    #         "SELECT id, nome, username, password_cifrata FROM Servizi WHERE id = ?",
-    #         (id_servizio,)
-    #     )
-    #     return cursor.fetchone()
+        cursor = self.conn.cursor()
+        cursor.execute(
+            "SELECT id, nome, username, password_cifrata FROM Servizi WHERE id = ?",
+            (id_servizio,)
+        )
+        return cursor.fetchone()

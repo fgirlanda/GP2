@@ -1,6 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QPushButton, QMessageBox, QHBoxLayout
 from PyQt6 import QtCore, QtGui
 from PyQt6.QtWidgets import QDialog
+from controller.controller_modifica_servizio import Dialog_Modifica
 from views.view_principale import Ui_Main
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
@@ -28,9 +29,7 @@ class Principale(QWidget):
 
     def on_dialog_aggiungi_finished(self, risultato):
         """Gestisce la chiusura del dialog."""
-        # risultato è QDialog.DialogCode.Accepted o Rejected
         if risultato == QDialog.DialogCode.Accepted:
-            # ricarica dal DB e aggiorna la tabella
             try:
                 self.servizi = self.db.get_servizi_per_utente(
                     self.utente_loggato[0])
@@ -43,13 +42,11 @@ class Principale(QWidget):
             self.popola_tabella()
             QMessageBox.information(
                 self, "Successo", "Il servizio è stato aggiunto")
-        # se Rejected non facciamo nulla
         self.dialog_aggiungi = None
 
     def apri_dialog_aggiungi(self):
         self.dialog_aggiungi = Dialog_Aggiungi(
             self.db, self.utente_loggato, self.key)
-        # open() mantiene non-modale; exec() sarebbe modale. Open va bene se vuoi non-bloccante.
         self.dialog_aggiungi.open()
         self.dialog_aggiungi.finished.connect(self.on_dialog_aggiungi_finished)
 
@@ -189,8 +186,28 @@ class Principale(QWidget):
             self, "Copia", "Password copiata negli appunti")
 
     def modifica_servizio(self, servizio_id):
-        # implementa secondo necessità
-        pass
+        servizio = self.db.get_servizio_by_id(servizio_id)
+        self.dialog_modifica = Dialog_Modifica(
+            self.db, self.utente_loggato, servizio, self.key)
+        self.dialog_modifica.open()
+        self.dialog_modifica.finished.connect(self.on_dialog_modifica_finished)
+
+    def on_dialog_modifica_finished(self, risultato):
+        """Gestisce la chiusura del dialog."""
+        if risultato == QDialog.DialogCode.Accepted:
+            try:
+                self.servizi = self.db.get_servizi_per_utente(
+                    self.utente_loggato[0])
+            except Exception as e:
+                QMessageBox.critical(
+                    self, "Errore", f"Impossibile leggere i servizi dal DB:\n{e}")
+                self.dialog_aggiungi = None
+                return
+
+            self.popola_tabella()
+            QMessageBox.information(
+                self, "Successo", "Il servizio è stato modificato")
+        self.dialog_aggiungi = None
 
     def find_row_by_id(self, servizio_id: int) -> int:
         """Ritorna l'indice di riga che contiene servizio_id nella colonna 0, o -1 se non trovato."""

@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
+class Ui_Dialog_Modifica(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(424, 375)
@@ -68,28 +68,31 @@ class Ui_Dialog(object):
         font.setPointSize(14)
         self.mser_dlg_btns.setFont(font)
         self.mser_dlg_btns.setOrientation(QtCore.Qt.Orientation.Horizontal)
-        self.mser_dlg_btns.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Cancel|QtWidgets.QDialogButtonBox.StandardButton.Ok)
+        self.mser_dlg_btns.setStandardButtons(
+            QtWidgets.QDialogButtonBox.StandardButton.Cancel | QtWidgets.QDialogButtonBox.StandardButton.Ok)
         self.mser_dlg_btns.setObjectName("mser_dlg_btns")
         self.verticalLayout.addWidget(self.mser_dlg_btns)
 
         self.retranslateUi(Dialog)
-        self.mser_dlg_btns.accepted.connect(Dialog.accept) # type: ignore
-        self.mser_dlg_btns.rejected.connect(Dialog.reject) # type: ignore
+        self.mser_dlg_btns.accepted.connect(Dialog.accept)  # type: ignore
+        self.mser_dlg_btns.rejected.connect(Dialog.reject)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Modifica servizio"))
         self.mser_slbl_nuovo_nome.setText(_translate("Dialog", "Nuovo nome"))
-        self.mser_slbl_nuovo_user.setText(_translate("Dialog", "Nuovo username"))
-        self.mser_slbl_nuova_password.setText(_translate("Dialog", "Nuova Password"))
+        self.mser_slbl_nuovo_user.setText(
+            _translate("Dialog", "Nuovo username"))
+        self.mser_slbl_nuova_password.setText(
+            _translate("Dialog", "Nuova Password"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_Dialog_Modifica()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec())

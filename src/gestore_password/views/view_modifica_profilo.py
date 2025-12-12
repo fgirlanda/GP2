@@ -9,7 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
+class Ui_Dialog_ModUtente(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(403, 356)
@@ -42,13 +42,15 @@ class Ui_Dialog(object):
         font = QtGui.QFont()
         font.setPointSize(14)
         self.mpro_slbl_vecchia_password.setFont(font)
-        self.mpro_slbl_vecchia_password.setObjectName("mpro_slbl_vecchia_password")
+        self.mpro_slbl_vecchia_password.setObjectName(
+            "mpro_slbl_vecchia_password")
         self.horizontalLayout_2.addWidget(self.mpro_slbl_vecchia_password)
         self.mpro_edit_vecchia_password = QtWidgets.QLineEdit(parent=Dialog)
         font = QtGui.QFont()
         font.setPointSize(14)
         self.mpro_edit_vecchia_password.setFont(font)
-        self.mpro_edit_vecchia_password.setObjectName("mpro_edit_vecchia_password")
+        self.mpro_edit_vecchia_password.setObjectName(
+            "mpro_edit_vecchia_password")
         self.horizontalLayout_2.addWidget(self.mpro_edit_vecchia_password)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
@@ -74,28 +76,31 @@ class Ui_Dialog(object):
         font.setPointSize(14)
         self.mpro_dlg_btns.setFont(font)
         self.mpro_dlg_btns.setOrientation(QtCore.Qt.Orientation.Horizontal)
-        self.mpro_dlg_btns.setStandardButtons(QtWidgets.QDialogButtonBox.StandardButton.Cancel|QtWidgets.QDialogButtonBox.StandardButton.Ok)
+        self.mpro_dlg_btns.setStandardButtons(
+            QtWidgets.QDialogButtonBox.StandardButton.Cancel | QtWidgets.QDialogButtonBox.StandardButton.Ok)
         self.mpro_dlg_btns.setObjectName("mpro_dlg_btns")
         self.verticalLayout_2.addWidget(self.mpro_dlg_btns)
 
         self.retranslateUi(Dialog)
-        self.mpro_dlg_btns.accepted.connect(Dialog.accept) # type: ignore
-        self.mpro_dlg_btns.rejected.connect(Dialog.reject) # type: ignore
+        self.mpro_dlg_btns.accepted.connect(Dialog.accept)  # type: ignore
+        self.mpro_dlg_btns.rejected.connect(Dialog.reject)  # type: ignore
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Modifica Profilo"))
         self.mpro_slbl_utente.setText(_translate("Dialog", "Username"))
-        self.mpro_slbl_vecchia_password.setText(_translate("Dialog", "Vecchia password"))
-        self.mpro_slbl_nuova_password.setText(_translate("Dialog", "Nuova Password"))
+        self.mpro_slbl_vecchia_password.setText(
+            _translate("Dialog", "Vecchia password"))
+        self.mpro_slbl_nuova_password.setText(
+            _translate("Dialog", "Nuova Password"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
+    ui = Ui_Dialog_ModUtente()
     ui.setupUi(Dialog)
     Dialog.show()
     sys.exit(app.exec())

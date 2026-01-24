@@ -66,11 +66,11 @@ class GestoreDatabase:
     # CRUD UTENTI
     # ============================
     # dati = (utente, hash_password, salt)
-    def inserisci_utente(self, dati: tuple):
+    def inserisci_utente(self, utente: str, hash_password: str, salt: bytes):
 
         self.cur.execute(
             "INSERT INTO Utenti (utente, hash_password, salt) VALUES (?, ?, ?)",
-            *dati
+            (utente, hash_password, salt)
         )
         self.conn.commit()
 

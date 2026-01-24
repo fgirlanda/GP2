@@ -1,6 +1,6 @@
-from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QPushButton, QMessageBox, QHBoxLayout
+from PyQt6.QtWidgets import QWidget, QHeaderView, QTableWidgetItem, QPushButton, QMessageBox, QHBoxLayout, QDialog
 from PyQt6 import QtCore, QtGui
-from PyQt6.QtWidgets import QDialog
+from PyQt6.QtCore import pyqtSignal
 from controller.controller_modifica_servizio import Dialog_Modifica
 from views.view_principale import Ui_Main
 from utility.criptatore import *
@@ -10,6 +10,8 @@ from controller.controller_aggiungi_servizio import Dialog_Aggiungi
 
 
 class Principale(QWidget):
+    dialog_aggiungi_signal = pyqtSignal()
+
     def __init__(self, db: GestoreDatabase):
         super().__init__()
         self.ui = Ui_Main()
@@ -27,6 +29,12 @@ class Principale(QWidget):
         self.db = db
         self.ui.main_btn_aggiungi.clicked.connect(self.apri_dialog_aggiungi)
 
+    def apri_dialog_aggiungi(self):
+        self.dialog_aggiungi = Dialog_Aggiungi(
+            self.db, self.utente_loggato, self.key)
+        self.dialog_aggiungi.open()
+        self.dialog_aggiungi.finished.connect(self.on_dialog_aggiungi_finished)
+
     def on_dialog_aggiungi_finished(self, risultato):
         """Gestisce la chiusura del dialog."""
         if risultato == QDialog.DialogCode.Accepted:
@@ -43,12 +51,6 @@ class Principale(QWidget):
             QMessageBox.information(
                 self, "Successo", "Il servizio è stato aggiunto")
         self.dialog_aggiungi = None
-
-    def apri_dialog_aggiungi(self):
-        self.dialog_aggiungi = Dialog_Aggiungi(
-            self.db, self.utente_loggato, self.key)
-        self.dialog_aggiungi.open()
-        self.dialog_aggiungi.finished.connect(self.on_dialog_aggiungi_finished)
 
     def set_utente_loggato(self, utente: tuple, raw_pass: str):
         self.utente_loggato = utente

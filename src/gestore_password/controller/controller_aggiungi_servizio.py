@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QDialog, QMessageBox, QDialogButtonBox
+from PyQt6.QtWidgets import QDialog, QMessageBox
 from utility.gestore_database import GestoreDatabase
 from views.view_aggiungi_servizio import Ui_Dialog_Aggiungi
 from utility.criptatore import *

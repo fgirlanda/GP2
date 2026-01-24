@@ -20,8 +20,7 @@ class Registrazione(QWidget):
     def registrati(self):
         utente = self.ui.reg_edit_utente.text()
         raw_password = self.ui.reg_edit_password.text()
-        password_cifrata = genera_hash(raw_password)
-        salt_servizi = os.urandom(16)
-        dati_utente = (utente, password_cifrata, salt_servizi)
-        self.db.inserisci_utente(dati_utente)
+        hash_password = genera_hash(raw_password)
+        salt = os.urandom(16)
+        self.db.inserisci_utente(utente, hash_password, salt)
         self.utente_creato.emit()

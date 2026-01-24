@@ -13,14 +13,13 @@ class MainApp(QMainWindow):
 
         self.stack = QStackedWidget()
         self.setCentralWidget(self.stack)
+        self.db = GestoreDatabase()
 
         self.inizializza_pagine()
         self.setup_navigazione()
         self.setup_segnali()
 
     def inizializza_pagine(self):
-        self.db = GestoreDatabase()
-
         self.pag_login = Login(self.db)
         self.pag_registrazione = Registrazione(self.db)
         self.pag_principale = Principale(self.db)
@@ -33,7 +32,6 @@ class MainApp(QMainWindow):
     def setup_navigazione(self):
         self.pag_login.ui.login_btn_registrati.clicked.connect(
             lambda: self.cambia_pagina(self.pag_registrazione))
-
         self.pag_registrazione.ui.reg_btn_annulla.clicked.connect(
             lambda: self.cambia_pagina(self.pag_login))
         self.pag_registrazione.utente_creato.connect(

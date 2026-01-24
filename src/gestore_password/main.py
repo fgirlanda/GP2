@@ -36,6 +36,8 @@ class MainApp(QMainWindow):
             lambda: self.cambia_pagina(self.pag_login))
         self.pag_registrazione.utente_creato.connect(
             lambda: self.cambia_pagina(self.pag_login))
+        self.pag_principale.ui.main_btn_logout.clicked.connect(
+            lambda: self.cambia_pagina(self.pag_login))
 
     def setup_segnali(self):
         self.pag_login.login_successo.connect(self.login)

@@ -20,19 +20,28 @@ class Principale(QWidget):
         icon_vis = QtGui.QIcon()
         icon_vis.addPixmap(QtGui.QPixmap(get_resource_path("visible.png")),
                            QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.db = db
 
-        self.ui.main_btn_visibility_pass.setIcon(icon_vis)
-        self.ui.main_btn_visibility_pass.clicked.connect(
-            self.mostra_pass_utente)
+        # ===== PRINCIPALE =====
 
-        self.ui.main_btn_modutente.clicked.connect(self.in_progress)
-
+        # ricerca
         icon_search = QtGui.QIcon()
         icon_search.addPixmap(QtGui.QPixmap(get_resource_path("cerca.png")),
                               QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.ui.main_btn_cerca.setIcon(icon_search)
-        self.db = db
+
+        # aggiungi servizio
         self.ui.main_btn_aggiungi.clicked.connect(self.apri_dialog_aggiungi)
+
+        # ===== PROFILO =====
+
+        # visibilità password utente
+        self.ui.main_btn_visibility_pass.setIcon(icon_vis)
+        self.ui.main_btn_visibility_pass.clicked.connect(
+            self.mostra_pass_utente)
+
+        # modifica utente (in progress)
+        self.ui.main_btn_modutente.clicked.connect(self.in_progress)
 
     def in_progress(self):
         QMessageBox.information(

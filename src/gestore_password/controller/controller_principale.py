@@ -25,12 +25,18 @@ class Principale(QWidget):
         self.ui.main_btn_visibility_pass.clicked.connect(
             self.mostra_pass_utente)
 
+        self.ui.main_btn_modutente.clicked.connect(self.in_progress)
+
         icon_search = QtGui.QIcon()
         icon_search.addPixmap(QtGui.QPixmap(get_resource_path("cerca.png")),
                               QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.ui.main_btn_cerca.setIcon(icon_search)
         self.db = db
         self.ui.main_btn_aggiungi.clicked.connect(self.apri_dialog_aggiungi)
+
+    def in_progress(self):
+        QMessageBox.information(
+            self, "Attenzione", "Funzionalità non ancora implementata.")
 
     def mostra_pass_utente(self):
         label = self.ui.main_dlbl_password

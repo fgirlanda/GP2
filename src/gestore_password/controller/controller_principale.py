@@ -20,7 +20,10 @@ class Principale(QWidget):
         icon_vis = QtGui.QIcon()
         icon_vis.addPixmap(QtGui.QPixmap(get_resource_path("visible.png")),
                            QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+
         self.ui.main_btn_visibility_pass.setIcon(icon_vis)
+        self.ui.main_btn_visibility_pass.clicked.connect(
+            self.mostra_pass_utente)
 
         icon_search = QtGui.QIcon()
         icon_search.addPixmap(QtGui.QPixmap(get_resource_path("cerca.png")),
@@ -28,6 +31,19 @@ class Principale(QWidget):
         self.ui.main_btn_cerca.setIcon(icon_search)
         self.db = db
         self.ui.main_btn_aggiungi.clicked.connect(self.apri_dialog_aggiungi)
+
+    def mostra_pass_utente(self):
+        label = self.ui.main_dlbl_password
+        pwd = label.property("password")
+
+        if not pwd:
+            return
+        hidden = label.property("hidden")
+        if hidden:
+            label.setText(pwd)
+        else:
+            label.setText("••••••••")
+        label.setProperty("hidden", not hidden)
 
     def apri_dialog_aggiungi(self):
         self.dialog_aggiungi = Dialog_Aggiungi(
@@ -62,7 +78,11 @@ class Principale(QWidget):
 
     def set_dati_utente(self, utente: str, raw_pass: str):
         self.ui.main_dlbl_utente.setText(utente)
-        self.ui.main_dlbl_password.setText(raw_pass)
+        label = self.ui.main_dlbl_password
+        label.setProperty("password", raw_pass)
+        label.setProperty("hidden", True)
+
+        label.setText("••••••••")
 
     def setup_tabella(self):
         self.ui.main_tbl_servizi.setColumnCount(4)

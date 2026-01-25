@@ -43,9 +43,37 @@ class Principale(QWidget):
         # modifica utente (in progress)
         self.ui.main_btn_modutente.clicked.connect(self.in_progress)
 
+    ####################################################################################
+
+    # SETUP PAGINA
+
+    def set_utente_loggato(self, utente: tuple, raw_pass: str):
+        self.utente_loggato = utente
+        self.key = derive_key(raw_pass, utente[3])
+        self.set_dati_utente(utente[1], raw_pass)
+        self.servizi = self.db.get_servizi_per_utente(self.utente_loggato[0])
+        self.setup_tabella()
+        self.popola_tabella()
+
+    def set_dati_utente(self, utente: str, raw_pass: str):
+        self.ui.main_dlbl_utente.setText(utente)
+        label = self.ui.main_dlbl_password
+        label.setProperty("password", raw_pass)
+        label.setProperty("hidden", True)
+
+        label.setText("••••••••")
+
+    ####################################################################################
+
+    # MODIFICA UTENTE
+
     def in_progress(self):
         QMessageBox.information(
             self, "Attenzione", "Funzionalità non ancora implementata.")
+
+    ####################################################################################
+
+    # MOSTRA/NASCONDI PASSWORD UTENTE
 
     def mostra_pass_utente(self):
         label = self.ui.main_dlbl_password
@@ -59,6 +87,10 @@ class Principale(QWidget):
         else:
             label.setText("••••••••")
         label.setProperty("hidden", not hidden)
+
+    ####################################################################################
+
+    # AGGIUNGI SERVIZIO
 
     def apri_dialog_aggiungi(self):
         self.dialog_aggiungi = Dialog_Aggiungi(
@@ -83,21 +115,9 @@ class Principale(QWidget):
                 self, "Successo", "Il servizio è stato aggiunto")
         self.dialog_aggiungi = None
 
-    def set_utente_loggato(self, utente: tuple, raw_pass: str):
-        self.utente_loggato = utente
-        self.key = derive_key(raw_pass, utente[3])
-        self.set_dati_utente(utente[1], raw_pass)
-        self.servizi = self.db.get_servizi_per_utente(self.utente_loggato[0])
-        self.setup_tabella()
-        self.popola_tabella()
+    ####################################################################################
 
-    def set_dati_utente(self, utente: str, raw_pass: str):
-        self.ui.main_dlbl_utente.setText(utente)
-        label = self.ui.main_dlbl_password
-        label.setProperty("password", raw_pass)
-        label.setProperty("hidden", True)
-
-        label.setText("••••••••")
+    # TABELLA SERVIZI
 
     def setup_tabella(self):
         self.ui.main_tbl_servizi.setColumnCount(4)
@@ -133,6 +153,29 @@ class Principale(QWidget):
 
         widget_bottoni = self.crea_bottoni_riga(servizio[0])
         self.ui.main_tbl_servizi.setCellWidget(row, 3, widget_bottoni)
+
+    def find_row_by_id(self, servizio_id: int) -> int:
+        """Ritorna l'indice di riga che contiene servizio_id nella colonna 0, o -1 se non trovato."""
+        for r in range(self.ui.main_tbl_servizi.rowCount()):
+            item = self.ui.main_tbl_servizi.item(r, 0)
+            if item is None:
+                continue
+            try:
+                if int(item.data(QtCore.Qt.ItemDataRole.UserRole)) == int(servizio_id):
+                    return r
+            except Exception:
+                continue
+        return -1
+
+    def elimina_riga(self, servizio_id):
+        num = self.ui.main_tbl_servizi.rowCount()
+        for r in range(num):
+            item = self.ui.main_tbl_servizi.item(r, 0)
+            if item is None:
+                continue
+            if int(item.data(QtCore.Qt.ItemDataRole.UserRole)) == int(servizio_id):
+                self.ui.main_tbl_servizi.removeRow(r)
+                break
 
     def crea_bottoni_riga(self, servizio_id: int) -> QWidget:
         widget = QWidget()
@@ -185,16 +228,6 @@ class Principale(QWidget):
         self.servizi = [s for s in self.servizi if s[0] != servizio_id]
         self.elimina_riga(servizio_id)
 
-    def elimina_riga(self, servizio_id):
-        num = self.ui.main_tbl_servizi.rowCount()
-        for r in range(num):
-            item = self.ui.main_tbl_servizi.item(r, 0)
-            if item is None:
-                continue
-            if int(item.data(QtCore.Qt.ItemDataRole.UserRole)) == int(servizio_id):
-                self.ui.main_tbl_servizi.removeRow(r)
-                break
-
     def mostra_password_servizio(self, servizio_id):
         # esempio: toggle mostra/nascondi usando userRole per recuperare password reale
         row = self.find_row_by_id(servizio_id)
@@ -245,16 +278,3 @@ class Principale(QWidget):
             QMessageBox.information(
                 self, "Successo", "Il servizio è stato modificato")
         self.dialog_aggiungi = None
-
-    def find_row_by_id(self, servizio_id: int) -> int:
-        """Ritorna l'indice di riga che contiene servizio_id nella colonna 0, o -1 se non trovato."""
-        for r in range(self.ui.main_tbl_servizi.rowCount()):
-            item = self.ui.main_tbl_servizi.item(r, 0)
-            if item is None:
-                continue
-            try:
-                if int(item.data(QtCore.Qt.ItemDataRole.UserRole)) == int(servizio_id):
-                    return r
-            except Exception:
-                continue
-        return -1

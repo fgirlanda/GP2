@@ -81,3 +81,32 @@ class TabellaController(QtCore.QObject):
         )
 
         return widget
+
+    def find_row_by_id(self, servizio_id: int) -> int:
+        for r in range(self.tabella.rowCount()):
+            item = self.tabella.item(r, 0)
+            if item and item.data(QtCore.Qt.ItemDataRole.UserRole) == servizio_id:
+                return r
+        return -1
+
+    def elimina_riga(self, servizio_id: int):
+        row = self.find_row_by_id(servizio_id)
+        if row != -1:
+            self.tabella.removeRow(row)
+
+    def toggle_password(self, servizio_id: int):
+        row = self.find_row_by_id(servizio_id)
+        if row == -1:
+            return
+
+        item = self.tabella.item(row, 2)
+        real = item.data(QtCore.Qt.ItemDataRole.UserRole)
+        item.setText(real if item.text().startswith("•") else "••••••••")
+
+    def copia_password(self, servizio_id: int):
+        row = self.find_row_by_id(servizio_id)
+        if row == -1:
+            return
+
+        pwd = self.tabella.item(row, 2).data(QtCore.Qt.ItemDataRole.UserRole)
+        QtGui.QGuiApplication.clipboard().setText(str(pwd))

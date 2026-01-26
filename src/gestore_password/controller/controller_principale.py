@@ -25,7 +25,7 @@ class Principale(QWidget):
         self.tabella_ctrl.modifica_richiesta.connect(self.modifica_servizio)
         self.tabella_ctrl.copia_richiesta.connect(self.copia_password_servizio)
         self.tabella_ctrl.mostra_richiesta.connect(
-            self.mostra_password_servizio)
+            self.toggle_password_servizio)
 
         self.db = db
 
@@ -127,58 +127,16 @@ class Principale(QWidget):
     ####################################################################################
 
     # TABELLA SERVIZI
-
-    def find_row_by_id(self, servizio_id: int) -> int:
-        """Ritorna l'indice di riga che contiene servizio_id nella colonna 0, o -1 se non trovato."""
-        for r in range(self.ui.main_tbl_servizi.rowCount()):
-            item = self.ui.main_tbl_servizi.item(r, 0)
-            if item is None:
-                continue
-            try:
-                if int(item.data(QtCore.Qt.ItemDataRole.UserRole)) == int(servizio_id):
-                    return r
-            except Exception:
-                continue
-        return -1
-
-    def elimina_riga(self, servizio_id):
-        num = self.ui.main_tbl_servizi.rowCount()
-        for r in range(num):
-            item = self.ui.main_tbl_servizi.item(r, 0)
-            if item is None:
-                continue
-            if int(item.data(QtCore.Qt.ItemDataRole.UserRole)) == int(servizio_id):
-                self.ui.main_tbl_servizi.removeRow(r)
-                break
-
     def elimina_servizio(self, servizio_id):
         self.db.elimina_servizio(servizio_id)
         self.servizi = [s for s in self.servizi if s[0] != servizio_id]
-        self.elimina_riga(servizio_id)
+        self.tabella_ctrl.elimina_riga(servizio_id)
 
-    def mostra_password_servizio(self, servizio_id):
-        row = self.find_row_by_id(servizio_id)
-        if row == -1:
-            return
-        item = self.ui.main_tbl_servizi.item(row, 2)
-        if not item:
-            return
-        current = item.text()
-        real_pass = item.data(QtCore.Qt.ItemDataRole.UserRole)
-        if current.startswith("•"):
-            item.setText(real_pass)
-        else:
-            item.setText("••••••••")
+    def toggle_password_servizio(self, servizio_id):
+        self.tabella_ctrl.toggle_password(servizio_id)
 
     def copia_password_servizio(self, servizio_id):
-        row = self.find_row_by_id(servizio_id)
-        if row == -1:
-            return
-        item = self.ui.main_tbl_servizi.item(row, 2)
-        if not item:
-            return
-        real_pass = item.data(QtCore.Qt.ItemDataRole.UserRole)
-        QtGui.QGuiApplication.clipboard().setText(str(real_pass))
+        self.tabella_ctrl.copia_password(servizio_id)
         QMessageBox.information(
             self, "Copia", "Password copiata negli appunti")
 

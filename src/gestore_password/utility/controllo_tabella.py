@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QWidget, QHBoxLayout, QPushButton, QTableWidget, QHeaderView, QTableWidgetItem
 from PyQt6 import QtCore, QtGui
-from criptatore import decripta
-from gestore_path import get_resource_path
+from utility.criptatore import decripta
+from utility.gestore_path import get_resource_path
 
 
 class TabellaController(QtCore.QObject):

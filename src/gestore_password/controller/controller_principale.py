@@ -6,6 +6,7 @@ from views.view_principale import Ui_Main
 from utility.criptatore import *
 from utility.gestore_database import GestoreDatabase
 from utility.gestore_path import *
+from utility.controllo_tabella import TabellaController
 from controller.controller_aggiungi_servizio import Dialog_Aggiungi
 
 
@@ -17,9 +18,15 @@ class Principale(QWidget):
         self.ui = Ui_Main()
         self.ui.setupUi(self)
         self.titolo = "Gestore Password"
-        icon_vis = QtGui.QIcon()
-        icon_vis.addPixmap(QtGui.QPixmap(get_resource_path("visible.png")),
-                           QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+
+        # Tabella
+        self.tabella_ctrl = TabellaController(self.ui.main_tbl_servizi)
+        self.tabella_ctrl.elimina_richiesto.connect(self.elimina_servizio)
+        self.tabella_ctrl.modifica_richiesta.connect(self.modifica_servizio)
+        self.tabella_ctrl.copia_richiesta.connect(self.copia_password_servizio)
+        self.tabella_ctrl.mostra_richiesta.connect(
+            self.mostra_password_servizio)
+
         self.db = db
 
         # ===== PRINCIPALE =====
@@ -36,6 +43,9 @@ class Principale(QWidget):
         # ===== PROFILO =====
 
         # visibilità password utente
+        icon_vis = QtGui.QIcon()
+        icon_vis.addPixmap(QtGui.QPixmap(get_resource_path("visible.png")),
+                           QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.ui.main_btn_visibility_pass.setIcon(icon_vis)
         self.ui.main_btn_visibility_pass.clicked.connect(
             self.mostra_pass_utente)
@@ -52,8 +62,7 @@ class Principale(QWidget):
         self.key = derive_key(raw_pass, utente[3])
         self.set_dati_utente(utente[1], raw_pass)
         self.servizi = self.db.get_servizi_per_utente(self.utente_loggato[0])
-        self.setup_tabella()
-        self.popola_tabella()
+        self.tabella_ctrl.aggiorna(self.servizi, self.key)
 
     def set_dati_utente(self, utente: str, raw_pass: str):
         self.ui.main_dlbl_utente.setText(utente)
@@ -110,7 +119,7 @@ class Principale(QWidget):
                 self.dialog_aggiungi = None
                 return
 
-            self.popola_tabella()
+            self.tabella_ctrl.aggiorna(self.servizi, self.key)
             QMessageBox.information(
                 self, "Successo", "Il servizio è stato aggiunto")
         self.dialog_aggiungi = None
@@ -118,41 +127,6 @@ class Principale(QWidget):
     ####################################################################################
 
     # TABELLA SERVIZI
-
-    def setup_tabella(self):
-        self.ui.main_tbl_servizi.setColumnCount(4)
-        self.ui.main_tbl_servizi.setHorizontalHeaderLabels(
-            ["Servizio", "Username", "Password", "Azioni"])
-        self.ui.main_tbl_servizi.horizontalHeader().setSectionResizeMode(
-            QHeaderView.ResizeMode.Stretch)
-        # inizializza vuota
-        self.ui.main_tbl_servizi.setRowCount(0)
-
-    def popola_tabella(self):
-        # svuota i contenuti e imposta il numero di righe
-        self.ui.main_tbl_servizi.clearContents()
-        self.ui.main_tbl_servizi.setRowCount(len(self.servizi))
-        for row, servizio in enumerate(self.servizi):
-            self.aggiungi_riga_servizio(servizio, row)
-
-    def aggiungi_riga_servizio(self, servizio: tuple, row: int):
-        nome = servizio[1]
-        username = servizio[2]
-        password = decripta(servizio[3], self.key)
-
-        item_nome = QTableWidgetItem(nome)
-        item_nome.setData(QtCore.Qt.ItemDataRole.UserRole, servizio[0])
-        self.ui.main_tbl_servizi.setItem(row, 0, item_nome)
-
-        item_username = QTableWidgetItem(username)
-        self.ui.main_tbl_servizi.setItem(row, 1, item_username)
-
-        item_password = QTableWidgetItem("••••••••")
-        item_password.setData(QtCore.Qt.ItemDataRole.UserRole, password)
-        self.ui.main_tbl_servizi.setItem(row, 2, item_password)
-
-        widget_bottoni = self.crea_bottoni_riga(servizio[0])
-        self.ui.main_tbl_servizi.setCellWidget(row, 3, widget_bottoni)
 
     def find_row_by_id(self, servizio_id: int) -> int:
         """Ritorna l'indice di riga che contiene servizio_id nella colonna 0, o -1 se non trovato."""
@@ -177,59 +151,12 @@ class Principale(QWidget):
                 self.ui.main_tbl_servizi.removeRow(r)
                 break
 
-    def crea_bottoni_riga(self, servizio_id: int) -> QWidget:
-        widget = QWidget()
-        layout = QHBoxLayout(widget)
-        layout.setContentsMargins(2, 2, 2, 2)
-        layout.setSpacing(2)
-        btn_size = QtCore.QSize(24, 24)
-
-        # Bottone mostra password (passiamo servizio_id, non row)
-        btn_mostra = QPushButton()
-        btn_mostra.setFixedSize(btn_size)
-        btn_mostra.setIcon(QtGui.QIcon(get_resource_path("visible.png")))
-        btn_mostra.setToolTip("Mostra/Nascondi password")
-        btn_mostra.clicked.connect(
-            lambda _, sid=servizio_id: self.mostra_password_servizio(sid))
-
-        # Bottone copia
-        btn_copia = QPushButton()
-        btn_copia.setFixedSize(btn_size)
-        btn_copia.setIcon(QtGui.QIcon(get_resource_path("copia.png")))
-        btn_copia.setToolTip("Copia password")
-        btn_copia.clicked.connect(
-            lambda _, sid=servizio_id: self.copia_password_servizio(sid))
-
-        # Bottone modifica
-        btn_modifica = QPushButton()
-        btn_modifica.setFixedSize(btn_size)
-        btn_modifica.setIcon(QtGui.QIcon(get_resource_path("modifica.png")))
-        btn_modifica.setToolTip("Modifica servizio")
-        btn_modifica.clicked.connect(
-            lambda _, sid=servizio_id: self.modifica_servizio(sid))
-
-        # Bottone elimina
-        btn_elimina = QPushButton()
-        btn_elimina.setFixedSize(btn_size)
-        btn_elimina.setIcon(QtGui.QIcon(get_resource_path("cestino.png")))
-        btn_elimina.setToolTip("Elimina servizio")
-        btn_elimina.clicked.connect(
-            lambda _, sid=servizio_id: self.elimina_servizio(sid))
-
-        layout.addWidget(btn_mostra)
-        layout.addWidget(btn_copia)
-        layout.addWidget(btn_modifica)
-        layout.addWidget(btn_elimina)
-
-        return widget
-
     def elimina_servizio(self, servizio_id):
         self.db.elimina_servizio(servizio_id)
         self.servizi = [s for s in self.servizi if s[0] != servizio_id]
         self.elimina_riga(servizio_id)
 
     def mostra_password_servizio(self, servizio_id):
-        # esempio: toggle mostra/nascondi usando userRole per recuperare password reale
         row = self.find_row_by_id(servizio_id)
         if row == -1:
             return
@@ -274,7 +201,7 @@ class Principale(QWidget):
                 self.dialog_aggiungi = None
                 return
 
-            self.popola_tabella()
+            self.tabella_ctrl.aggiorna(self.servizi, self.key)
             QMessageBox.information(
                 self, "Successo", "Il servizio è stato modificato")
         self.dialog_aggiungi = None

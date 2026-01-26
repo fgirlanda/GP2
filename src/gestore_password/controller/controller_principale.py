@@ -127,6 +127,7 @@ class Principale(QWidget):
     ####################################################################################
 
     # TABELLA SERVIZI
+
     def elimina_servizio(self, servizio_id):
         self.db.elimina_servizio(servizio_id)
         self.servizi = [s for s in self.servizi if s[0] != servizio_id]
